@@ -1,0 +1,53 @@
+{
+	"type": "UserCollection",
+	"properties": {
+		"picture": {
+			"name": "picture",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "picture",
+			"order": 0
+		},
+		"gender": {
+			"name": "gender",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "gender",
+			"order": 1
+		},
+		"city": {
+			"name": "city",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "city",
+			"order": 2
+		},
+		"public": {
+			"name": "public",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "public",
+			"order": 3
+		},
+		"likes": {
+			"name": "likes",
+			"type": "array",
+			"typeLabel": "array",
+			"required": true,
+			"id": "likes",
+			"order": 4
+		},
+		"sites": {
+			"name": "sites",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "sites",
+			"order": 5
+		}
+	}
+}
