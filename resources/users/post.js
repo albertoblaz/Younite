@@ -1,3 +1,6 @@
-var _ = require('underscore');
+var self = this;
 
-console.log(_);
+
+
+protect('sites');
+protect('friends');

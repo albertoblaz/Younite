@@ -48,6 +48,14 @@
 			"required": false,
 			"id": "sites",
 			"order": 5
+		},
+		"friends": {
+			"name": "friends",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "friends",
+			"order": 6
 		}
 	}
 }
