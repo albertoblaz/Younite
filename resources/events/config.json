@@ -1,0 +1,53 @@
+{
+	"type": "Collection",
+	"properties": {
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "name",
+			"order": 0
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "description",
+			"order": 1
+		},
+		"idDisco": {
+			"name": "idDisco",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "idDisco",
+			"order": 2
+		},
+		"date": {
+			"name": "date",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "date",
+			"order": 3
+		},
+		"people": {
+			"name": "people",
+			"type": "array",
+			"typeLabel": "array",
+			"required": true,
+			"id": "people",
+			"order": 4
+		},
+		"price": {
+			"name": "price",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "price",
+			"order": 5
+		}
+	}
+}
