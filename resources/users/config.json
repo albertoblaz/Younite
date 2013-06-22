@@ -1,21 +1,29 @@
 {
 	"type": "UserCollection",
 	"properties": {
+		"displayName": {
+			"name": "displayName",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "displayName",
+			"order": 0
+		},
 		"picture": {
 			"name": "picture",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
 			"id": "picture",
-			"order": 0
+			"order": 1
 		},
 		"gender": {
 			"name": "gender",
 			"type": "string",
 			"typeLabel": "string",
-			"required": false,
+			"required": true,
 			"id": "gender",
-			"order": 1
+			"order": 2
 		},
 		"city": {
 			"name": "city",
@@ -23,7 +31,7 @@
 			"typeLabel": "string",
 			"required": true,
 			"id": "city",
-			"order": 2
+			"order": 3
 		},
 		"public": {
 			"name": "public",
@@ -31,7 +39,7 @@
 			"typeLabel": "boolean",
 			"required": true,
 			"id": "public",
-			"order": 3
+			"order": 4
 		},
 		"likes": {
 			"name": "likes",
@@ -39,7 +47,7 @@
 			"typeLabel": "array",
 			"required": true,
 			"id": "likes",
-			"order": 4
+			"order": 5
 		},
 		"sites": {
 			"name": "sites",
@@ -47,7 +55,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "sites",
-			"order": 5
+			"order": 6
 		},
 		"friends": {
 			"name": "friends",
@@ -55,7 +63,31 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "friends",
-			"order": 6
+			"order": 7
+		},
+		"events": {
+			"name": "events",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "events",
+			"order": 8
+		},
+		"bio": {
+			"name": "bio",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "bio",
+			"order": 9
+		},
+		"birthday": {
+			"name": "birthday",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "birthday",
+			"order": 10
 		}
 	}
 }

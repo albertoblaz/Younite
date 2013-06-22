@@ -56,6 +56,22 @@
 			"required": false,
 			"id": "users",
 			"order": 6
+		},
+		"events": {
+			"name": "events",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "events",
+			"order": 7
+		},
+		"owner": {
+			"name": "owner",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "owner",
+			"order": 8
 		}
 	}
 }

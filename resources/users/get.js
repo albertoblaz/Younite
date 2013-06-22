@@ -3,6 +3,8 @@ var _ = require('underscore');
 
 var self = this;
 
+hide('username');
+
 if(!isAllowed()){
   hide('sites');
   hide('gender');
