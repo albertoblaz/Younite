@@ -1,0 +1,29 @@
+{
+	"type": "Collection",
+	"properties": {
+		"timeline": {
+			"name": "timeline",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "timeline",
+			"order": 0
+		},
+		"new": {
+			"name": "new",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "new",
+			"order": 1
+		},
+		"user": {
+			"name": "user",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "user",
+			"order": 2
+		}
+	}
+}

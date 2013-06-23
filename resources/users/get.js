@@ -4,7 +4,11 @@ var _ = require('underscore');
 var self = this;
 
 hide('username');
+hide('role');
 
+if(!isMe(this.id)){
+    hide('timeline');
+}
 if(!isAllowed()){
   hide('sites');
   hide('gender');
