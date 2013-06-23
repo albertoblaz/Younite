@@ -1,0 +1,15 @@
+
+/* Columns */
+
+.columns.one      { width : 8.3333333333%; }
+.columns.two      { width : 16.666666666%; }
+.columns.three    { width : 25%;  }
+.columns.four     { width : 33.333333333%; }
+.columns.five     { width : 41.666666666%; }
+.columns.six      { width : 50%;  }
+.columns.seven    { width : 58.333333333%; }
+.columns.eight    { width : 66.666666666%; }
+.columns.nine     { width : 75%;  }
+.columns.ten      { width : 83.333333333%; }
+.columns.eleven   { width : 91.666666666%; }
+.columns.twelve   { width : 100%; }
