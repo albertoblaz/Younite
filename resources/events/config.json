@@ -33,12 +33,12 @@
 			"id": "date",
 			"order": 3
 		},
-		"people": {
-			"name": "people",
+		"users": {
+			"name": "users",
 			"type": "array",
 			"typeLabel": "array",
-			"required": true,
-			"id": "people",
+			"required": false,
+			"id": "users",
 			"order": 4
 		},
 		"price": {

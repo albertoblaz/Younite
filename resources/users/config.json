@@ -49,13 +49,21 @@
 			"id": "likes",
 			"order": 5
 		},
+		"birthday": {
+			"name": "birthday",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "birthday",
+			"order": 6
+		},
 		"sites": {
 			"name": "sites",
 			"type": "array",
 			"typeLabel": "array",
 			"required": false,
 			"id": "sites",
-			"order": 6
+			"order": 7
 		},
 		"friends": {
 			"name": "friends",
@@ -63,7 +71,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "friends",
-			"order": 7
+			"order": 8
 		},
 		"events": {
 			"name": "events",
@@ -71,7 +79,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "events",
-			"order": 8
+			"order": 9
 		},
 		"bio": {
 			"name": "bio",
@@ -79,15 +87,23 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "bio",
-			"order": 9
+			"order": 10
 		},
-		"birthday": {
-			"name": "birthday",
+		"role": {
+			"name": "role",
 			"type": "string",
 			"typeLabel": "string",
-			"required": true,
-			"id": "birthday",
-			"order": 10
+			"required": false,
+			"id": "role",
+			"order": 11
+		},
+		"timeline": {
+			"name": "timeline",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "timeline",
+			"order": 12
 		}
 	}
 }

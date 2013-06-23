@@ -1,0 +1,1 @@
+if(!me) cancelAll("You must be logged", 401);
