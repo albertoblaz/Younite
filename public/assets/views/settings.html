@@ -1,0 +1,138 @@
+<section id="settings" class="main" data-transition="slide">
+
+    <header data-title="Settings" class="violet">
+        <nav>
+            <a href="#nav" data-router="aside" data-icon="menu"></a>
+        </nav>
+
+        <nav class="right">
+            <a href="#help" data-router="section" data-icon="help" data-label="Help"></a>
+        </nav>
+    </header>
+
+
+    <article class="active scroll">
+
+            <ul class="list">
+                <li class="anchor">Account Data</li>
+                <li>
+                    <form class="settings-form">
+                        <fieldset>
+                            <label>Email </label>
+                            <input type="email" placeholder="Type your email" id="email"    value="albertolespaul@gmail.com">
+                        </fieldset>
+                        <fieldset>
+                            <label>Password </label>
+                            <input type="password" placeholder="Type your password" id="password" value="password">
+                        </fieldset>
+                        <fieldset>
+                            <label>Re-Password </label>
+                            <input type="password" placeholder="Type again password" id="re-password" value="password">
+                        </fieldset>
+                    </form>
+
+                    <div style="margin-top: 5px;">
+                        <a href="#" data-icon="check"  class="button same-line left accept">Save</a>
+                        <a href="#" data-icon="cancel" class="button same-line right">Cancel</a>
+                        <div class="clear"></div>
+                    </div>
+                </li>
+
+                <li class="anchor">Privacy</li>
+                <li>
+                    <form>
+                        <div>
+                            <label>Who can see my Activity?</label>
+                            <label class="select">
+                                <select name="select-activity" id="select-activity">
+                                    <option value="public">Public</option>
+                                    <option value="friends">Only friends</option>
+                                    <option value="private">Private</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>Receive Notifications from Sites and Parties</label>
+                            <label class="select">
+                                <select name="select-notif" id="select-notif">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>Receive Notifications from Friends</label>
+                            <label class="select">
+                                <select name="select-notif-friends" id="select-notif-friends">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </label>
+                        </div>
+                    </form>
+                </li>
+
+                <li class="anchor">Misc</li>
+                <li class="arrow selectable">
+                    <a href="#help" data-router="section">
+                        <strong>Help</strong>
+                    </a>
+                </li>
+                <li class="arrow selectable">
+                    <a href="#about" data-router="section">
+                        <strong>Meet the Authors of Younite</strong>
+                    </a>
+                </li>
+
+                <li class="anchor">Legal</li>
+                <li class="arrow selectable">
+                    <strong>Terms of Services</strong>
+                </li>
+                <li class="arrow selectable">
+                    <strong>Privacy Conditions</strong>
+                </li>
+                <li class="arrow selectable">
+                    <strong>Licenses</strong>
+                </li>
+            </ul>
+
+            <div class="margined">
+                <a href="#" data-icon="cancel" class="button anchor cancel">Delete Account</a>
+            </div>
+
+
+
+<!--
+        <form class="rounded">
+            <ul class="list indented">
+                <li>
+                    <label>Personal Info</label>
+                    <input type="text"  placeholder="Your name"  id="name"      value="Alberto Blázquez">
+                    <input type="email" placeholder="Your email" id="email" value="albertolespaul@gmail.com">
+                </li>
+
+                <li>
+                    <label>Preferences</label>
+                    <div class"one row">
+                        <input type="range" placeholder="type your name">
+                    </div>
+                </li>
+
+                <li>
+                    <label>Preferences 2</label>
+                    <input type="range" min="0" max="1" class="checkbox left" value="0" />
+                    <input type="range" min="0" max="1" class="checkbox right active" value="1" />
+                    <div class="clear"></div>
+                </li>
+            </ul>
+
+            <div class="two rows indented">
+                <a href="#" class="button blue four columns left" data-icon="check">Accept</a>
+                <a href="#" class="button four columns right" data-icon="multiply">Cancel</a>
+            </div>
+        </form>
+-->
+
+    </article>
+
+</section>
