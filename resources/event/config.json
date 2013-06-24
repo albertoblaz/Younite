@@ -1,0 +1,45 @@
+{
+	"type": "Collection",
+	"properties": {
+		"timestamp": {
+			"name": "timestamp",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "timestamp",
+			"order": 0
+		},
+		"agent": {
+			"name": "agent",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "agent",
+			"order": 1
+		},
+		"from": {
+			"name": "from",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "from",
+			"order": 2
+		},
+		"type": {
+			"name": "type",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "type",
+			"order": 3
+		},
+		"action": {
+			"name": "action",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "action",
+			"order": 4
+		}
+	}
+}
