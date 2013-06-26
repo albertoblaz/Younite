@@ -11,10 +11,4 @@ if(!internal){
 protect('role');
 protect('timeline');
 
-console.log(changed(this.sites));
-console.log('nuevas',this.sites);
 var _ = require('underscore');
-
-
-
-console.log(changed(this.sites));

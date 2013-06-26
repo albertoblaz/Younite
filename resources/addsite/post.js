@@ -8,8 +8,8 @@ dpd.sites.get(site, function(result, err) {
         cancelIf(err);
         dpd.sites.put(site, {users: {$push: me.id}}, function(result, err) {
             cancelIf(err);
-            dpd.timeline.put(me.timeline, {new : {$inc: 1} ,timeline : {$push: {agent : this, user : me, type : 'site', action : 'follow'}}}, function(res, err){
-                console.log(res);
+            dpd.notifications.post({agent : site, from : me, type : 'site', action : 'follow'}, function(res, err){
+                console.log(err);
                 cancelIf(err);
             });
         });
