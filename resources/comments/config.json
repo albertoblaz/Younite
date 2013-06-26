@@ -1,0 +1,29 @@
+{
+	"type": "Collection",
+	"properties": {
+		"commenter": {
+			"name": "commenter",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "commenter",
+			"order": 0
+		},
+		"commented": {
+			"name": "commented",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "commented",
+			"order": 1
+		},
+		"comment": {
+			"name": "comment",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "comment",
+			"order": 2
+		}
+	}
+}

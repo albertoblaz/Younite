@@ -6,6 +6,8 @@ var self = this;
 hide('username');
 hide('role');
 
+self.isFriend = _.contains(me.friends, self.id);
+
 if(!isMe(this.id)){
     hide('timeline');
 }
