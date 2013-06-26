@@ -1,4 +1,4 @@
-class Site extends Monocle.Model
+class App.Site extends Monocle.Model
 
     @fields "name", "description", "city", "address", "picture", "style", "users", "events", "owner"
 
@@ -10,7 +10,8 @@ class Site extends Monocle.Model
         unless @name
             "name is required"
 
-    @love: (user) ->
-        @users.push user
-        user.addSite @
+    love: (user) ->
+        console.log "love"
+        # @users.push user
+        # user.addSite @
         @

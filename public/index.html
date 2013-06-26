@@ -61,8 +61,7 @@
 
 <body class="app">
 
-    <section id="main" class="violet">
-
+    <section id="login" class="violet">
         <article class="indented splash active violet">
             <img src="assets/images/logo_splash.png">
 
@@ -70,11 +69,27 @@
                 <input type="text"     placeholder="Your username" id="login-name"     value="">
                 <input type="password" placeholder="Your password" id="login-password" value="">
 
-                <a href="#activity" data-router="section" class="button same-line" data-icon="">Login</a>
-                <a href="#activity" data-router="section" class="button same-line" data-icon="">Sign up</a>
+                <a href="#undef" data-router="section" class="button same-line btn-login">Login</a>
+                <a href="#signup" data-router="section" class="button same-line btn-signup">Sign up</a>
             </form>
         </article>
+    </section>
 
+
+    <section id="signup" class="violet" data-transition="pop">
+        <article class="indented splash active violet">
+            <img src="assets/images/logo_splash.png">
+
+            <form class="rounded">
+                <input type="text"     placeholder="Your username..." id="signup-name"     value="">
+                <input type="password" placeholder="Your password..." id="signup-password" value="">
+
+                <input type="text"     placeholder="Real name..."     id="signup-realname" value="">
+                <input type="text"     placeholder="Gender..."        id="signup-gender"   value="">
+
+                <a href="#undef" data-router="section" class="button accept btn-signup">Sign up</a>
+            </form>
+        </article>
     </section>
 
 
@@ -89,7 +104,7 @@
 
         Lungo.init({
             name      : 'Younite',
-            version   : '0.3',
+            version   : '0.4.2',
             resources : [
                             'assets/views/nav.html',
                             'assets/views/search.html',
@@ -110,7 +125,7 @@
 
     <!-- Events Handlers -->
     <script type="text/javascript" src="assets/events/swipe-gestures.js"></script>
-    <script type="text/javascript" src="assets/events/activity-buttons.js"></script>
+    <!-- <script type="text/javascript" src="assets/events/activity-buttons.js"></script> -->
     <script type="text/javascript" src="assets/events/map-geoposition.js"></script>
     <script type="text/javascript" src="assets/events/help-send-question.js"></script>
 
