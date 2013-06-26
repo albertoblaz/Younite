@@ -28,6 +28,3 @@ class App.HelpController extends Monocle.Controller
             3,                                                      # Time on screen
             () -> {  }                                              # Callback function
         ) if res
-
-
-cont = new App.HelpController "section#help"

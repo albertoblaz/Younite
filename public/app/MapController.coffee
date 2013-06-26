@@ -48,6 +48,3 @@ class App.MapController extends Monocle.Controller
         # Change privacy settings
 
         @notified = true
-
-
-cont = new App.MapController "section#map"
