@@ -46,14 +46,3 @@ class App.SitesController extends Monocle.Controller
     viewProfile: (params) ->
         console.log "View the profile of the site: #{params.id}"
 
-
-siteCont = new App.SitesController "section#sites"
-
-Lungo.ready ->
-    console.log "Ready!!"
-    for n in [1..4]
-        App.Site.create
-            name: "Kapital #{n}"
-            description: "Lo mejor de Madrid"
-            picture: "assets/images/logos/kapital.png"
-

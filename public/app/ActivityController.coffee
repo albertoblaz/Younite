@@ -22,6 +22,3 @@ class App.ActivityController extends Monocle.Controller
         action = if b.hasClass 'secondary' then 'hide' else 'show'
         elems = @list.find ".#{id}"
         elems[action]()
-
-
-cont = new App.ActivityController "section#activity"

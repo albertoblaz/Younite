@@ -51,5 +51,3 @@ class App.SignupController extends Monocle.Controller
             2                                           # Time on screen
         )
 
-
-cont = new App.SignupController "section#signup"
