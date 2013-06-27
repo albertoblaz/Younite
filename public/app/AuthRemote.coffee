@@ -29,29 +29,7 @@ class App.AuthRemote
             console.log "Callback de error", err
             failure? err
 
-        """
-        # These only work for the onSucc case
-        # $$.post uri, user, onSucc
-        """
-
-
-        """
-        # Both cases gives the onFail result
-        $$.ajax
-            type: "POST"
-            url: uri,
-            data: user
-            dataType: "json"
-            async: true,
-            success: onSucc
-            error: onFail
-        """
-
-
-
-        """
         # jQuery works!
         p = $.post uri, user
         p.done onSucc
         p.fail onFail
-        """

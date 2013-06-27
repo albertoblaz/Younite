@@ -31,6 +31,6 @@ class App.AuthStorage
 
     lookup: (user) ->
         arr = @users.filter (u) -> user.username is u.username and user.password is u.password
-        throw "Too much users on storage" if arr.length > 1
+        throw App.Exceptions.TooMuchUsersStorage if arr.length > 1
         arr[0]
 

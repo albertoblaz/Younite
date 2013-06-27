@@ -30,7 +30,7 @@ class App.MapController extends Monocle.Controller
     onAccept: ->
         Lungo.Notification.hide()
 
-        setTimeout ->
+        notif = ->
             # Query current geo-location
             # Query Google
             Lungo.Notification.show()
@@ -40,11 +40,10 @@ class App.MapController extends Monocle.Controller
                 Lungo.Notification.hide()
             , 3000
 
-        , 300
-
+        setTimeout notif, 300
         @notified = true
+
 
     onCancel: ->
         # Change privacy settings
-
         @notified = true
