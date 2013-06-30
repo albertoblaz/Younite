@@ -6,6 +6,7 @@ if(!internal){
     protect('friends');
     protect('sites');
     protect('events');
+    protect('activity');
 }
 
 protect('role');

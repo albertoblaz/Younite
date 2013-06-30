@@ -1,6 +1,6 @@
 if(!me) cancelAll("You must be logged", 401);
-var _ = require('underscore');
 
+var _ = require('underscore');
 var self = this;
 
 hide('username');

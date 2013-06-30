@@ -104,6 +104,14 @@
 			"required": false,
 			"id": "timeline",
 			"order": 12
+		},
+		"activity": {
+			"name": "activity",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "activity",
+			"order": 13
 		}
 	}
 }

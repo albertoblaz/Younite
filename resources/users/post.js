@@ -4,6 +4,8 @@ protect('friends');
 protect('events');
 protect('role');
 protect('timeline');
+protect('activity');
+
 
 this.role = 'user';
 
