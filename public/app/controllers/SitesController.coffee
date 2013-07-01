@@ -38,17 +38,20 @@ class App.SitesController extends Monocle.Controller
     bindSiteCreate: (site) =>
         console.log "You've created #{site.name}!"
         console.log site
-
+        
         view = new App.SiteItemView model: site
         # if site.loving
         # TESTING
-        if site.name is "hola"
+        if site.name is "hola"    
+            site.loving = true
             view.container = @fav
         #else if site.recommended
         else
+            site.loving = false
             view.container = @rec
         # END TESTING
         view.append site
+        
 
 
     bindSiteDelete: (site) =>
