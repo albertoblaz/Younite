@@ -956,12 +956,14 @@ form textarea,
   font-size: 1.2em;
 }
 
-#signupA article {
+#signup1 article {
   background-color: white;
 }
 
-#signupA select,
-#signupB select,
-#signupC select { 
+#signup1 select { 
   background-color: #DDD;
+}
+
+.signup label {
+  font-size: 1.2em;
 }
