@@ -13,7 +13,8 @@ class App.SitesController extends Monocle.Controller
         super
 
         # Events Bounded
-        App.Site.bind "create", @bindSiteCreate
+        # App.Site.bind "create", @bindSiteCreate
+        App.Site.bind "change", @bindSiteChange
         App.Site.bind "delete", @bindSiteDelete
         App.Site.bind "error", @bindSiteError
 
@@ -31,35 +32,53 @@ class App.SitesController extends Monocle.Controller
             console.error "Err: ", err
 
 
-    onSearch: (event) ->
-        alert "Searching"
+    onSearch: (event) =>
+        console.log "Searching"
 
 
-    bindSiteCreate: (site) =>
-        console.log "You've created #{site.name}!"
-        console.log site
+    # bindSiteCreate: (site) =>
+    #     console.log "You've created #{site.name}!"
+    #     console.log site
         
-        view = new App.SiteItemView model: site
-        # if site.loving
-        # TESTING
-        if site.name is "hola"    
-            site.loving = true
-            view.container = @fav
-        #else if site.recommended
-        else
-            site.loving = false
+    #     view = new App.SiteView model: site
+    #     # if site.loving
+    #     # TESTING
+    #     if site.name is "hola"    
+    #         site.loving = true
+    #         view.container = @fav
+    #     #else if site.recommended
+    #     else
+    #         site.loving = false
+    #         view.container = @rec
+    #     # END TESTING
+    #     view.append site
+        
+
+    bindSiteChange: (site) =>
+        console.log "You've change #{site.name}!"
+        view = new App.SiteView model: site
+
+        # TESTING asi se ve bien como se alterna la vista entre las dos listas
+        # if site.loving is true
+        #     view.container = @fav 
+        # else
+        #     view.container = @rec 
+        # view.append site
+
+        if site.loving
+            view.container = @fav 
+            view.append site
+        else if site.recommended
             view.container = @rec
-        # END TESTING
-        view.append site
-        
+            view.append site
 
 
     bindSiteDelete: (site) =>
-        alert "You've deleted #{site.name}!"
+        console.log "You've deleted #{site.name}!"
 
 
     bindSiteError: (site) =>
-        alert "Site Error spotted, #{site}!"
+        console.log "Site Error spotted, #{site}!"
 
 
     viewProfile: (params) ->
