@@ -3,7 +3,9 @@ var deployd = require('deployd');
 var url = require('url');
 
 var db_url = url.parse(
-    process.env.MONGOHQ_URL || "mongodb://:@ds033818.mongolab.com:33818/heroku_app16662768"
+    process.env.MONGOHQ_URL || "mongodb://heroku_app16662768:ojq8onhcemca48uq3k0v3f67r6@ds033818.mongolab.com:33818/heroku_app16662768"
+//"mongodb://:@ds033818.mongolab.com:33818/heroku_app16662768"
+
 );
 
 var options = {
