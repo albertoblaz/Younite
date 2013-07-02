@@ -12,7 +12,7 @@ dpd.users.get(user, function(result, err) {
         var activityMe = {agent : user, timestamp : new Date(), type : 'friend', action : 'new'};
         var notificationMe = {agent : user, from : me, type : 'friend', action : 'new'};
 
-        dpd.users.put(me.id, {friends: {$push: user}, activity : {$push : activityMe}}, function(result, err) {
+        dpd.users.put(me.id, {friends: {$push: user}, activity : {$push : activityMe} , petitionsTo : {$pull : user}}, function(result, err) {
         cancelIf(err);
             dpd.notifications.post(notificationMe, function(res, err){
                 cancelIf(err);
@@ -22,8 +22,8 @@ dpd.users.get(user, function(result, err) {
         var activityFriend = {agent : user, timestamp : new Date(), type : 'friend', action : 'new'};
         var notificationFriend = {agent : me, from : user, type : 'friend', action : 'new'};
 
-        dpd.users.put(user, {friends: {$push: me.id}, activity : {$push : activityFriend}}, function(result, err) {
-        cancelIf(err);
+        dpd.users.put(user, {friends: {$push: me.id}, activity : {$push : activityFriend}, petitionsFrom : {$pull : me.id}}, function(result, err) {
+            cancelIf(err);
             dpd.notifications.post(notificationFriend, function(res, err){
                 cancelIf(err);
             });
