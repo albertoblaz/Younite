@@ -9,7 +9,7 @@ var db_url = url.parse(
 );
 
 var options = {
-    port: process.env.PORT || 3000;
+    port: process.env.PORT || 3000
     env: 'production',
     db: {
         "host": db_url.hostname,
