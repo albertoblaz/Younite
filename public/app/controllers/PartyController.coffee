@@ -1,0 +1,1 @@
+class App.PartyController extends Monocle.Controller
