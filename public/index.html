@@ -69,27 +69,178 @@
                 <input type="text"     placeholder="Your username" id="login-name"     value="">
                 <input type="password" placeholder="Your password" id="login-password" value="">
 
-                <a href="#undef" data-router="section" class="button same-line btn-login">Login</a>
-                <a href="#signup" data-router="section" class="button same-line btn-signup">Sign up</a>
+                <strong>
+                    <a href="#undef" data-router="section" class="button accept anchor btn-login">Press for Login</a>
+                </strong>
+            </form>
+
+            <br>
+            <strong>
+                <p class="login-text">If you wanna be in, please</p>
+                <a href="#signupA" data-router="section" class="button accept same-line btn-signup">Join us!</a>
+            </strong>
+            
+        </article>
+    </section>
+
+
+    <section id="signupA" class="violet" data-transition="pop">
+        <header data-title="Signup (1/3)">
+            <nav>
+                <a href="#login" data-router="section" data-icon="left" data-label="Login"></a>
+            </nav>
+
+            <nav class="right">
+                <a href="#signupB" data-router="section" data-icon="right" data-label="Next"></a>
+            </nav>
+        </header>
+
+
+        <article class="active">
+
+            <form class="settings-form">
+                <fieldset style="background-color: #666;">
+                    <p class="login-text" style="margin-bottom: 10px;text-align: center;color: white;">First of all, tell us something about you :)</p>
+                </fieldset>
+
+                <fieldset>
+                    <label>Display Name </label>
+                    <input type="text" id="signup-displayname" value="">
+                </fieldset>
+
+                <fieldset>
+                    <label>Birthdate </label>
+                    <input type="date" id="signup-birthdate" value="">    
+                </fieldset>
+
+                <fieldset>
+                </fieldset>
+            </form>
+
+            <form class="margined">
+                <div>
+                    <label>Gender </label>
+                    <label class="select">
+                        <select id="signup-gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div>
+                    <label>Country </label>
+                    <label class="select">
+                        <select id="signup-country">
+                            <option value="Spain">Spain</option>
+                            <option value="Sweden">Sweden</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div>
+                    <label>City </label>
+                    <label class="select">
+                        <select id="signup-city">
+                            <option value=""></option>
+                            <option value="Spain">Madrid</option>
+                            <option value="Sweden">Barcelona</option>
+                            <option value="Sweden">Sevilla</option>
+                            <option value="Sweden">Valencia</option>
+                            <option value="Sweden">Bilbao</option>
+                            <option value="Sweden">Ibiza</option>
+                        </select>
+                    </label>
+                </div>
+            </form>
+
+            <div class="margined">
+                <a href="#login"   data-router="section" data-icon="left"  class="button same-line left">Back to Login</a>
+                <a href="#signupB" data-router="section" data-icon="right" class="button same-line right">Next</a>
+                <div class="clear"></div>
+            </div>
+        
+        </article>
+    </section>
+
+
+    <section id="signupB" class="signup violet" data-transition="slide">
+        <header data-title="Signup (2/3)">
+            <nav>
+                <a href="#signupA" data-router="section" data-icon="left" data-label="Back"></a>
+            </nav>
+
+            <nav class="right">
+                <a href="#signupC" data-router="section" data-icon="right" data-label="Next"></a>
+            </nav>
+        </header>
+
+        <article class="active">
+
+            <form class="margined">
+                <p>Now, let us know what your tastes</p>
+
+                <div>
+                    <label>Music Styles</label>
+                    <label class="select">
+                        <select id="signup-music">
+                            <option value="Mierda 1">Mierda 1</option>
+                            <option value="Mierda 2">Mierda 3</option>
+                            <option value="Mierda 3">Mierda 3</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label>Ambient</label>
+                    <label class="select">
+                        <select id="signup-ambient">
+                            <option value="Ambient 1">1</option>
+                            <option value="Ambient 2">2</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label>Receive Notifications from Friends</label>
+                    <label class="select">
+                        <select name="select-notif-friends" id="select-notif-friends">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </label>
+                </div>
+
+                <p class="login-text">Now, select a photo to upload</p>
+                <br>
+
+                <img src="assets/images/logo_splash.png">
+
+                <p class="left login-text">Describe yourself in few words</p>
+                <br>
+
+                <input type="text"     placeholder="A bio..." id="signup-bio" value="">
+
+                <a href="#signupA" data-router="section" data-icon="left"  class="button same-line">Back</a>
+                <a href="#signupC" data-router="section" data-icon="right" class="button same-line">Next</a>
             </form>
         </article>
     </section>
 
 
-    <section id="signup" class="violet" data-transition="pop">
-        <article class="indented splash active violet">
-            <img src="assets/images/logo_splash.png">
+    <section id="signupC" class="signup violet" data-transition="slide">
+        <article id="third" class="indented splash active violet">
 
             <form class="rounded">
+                <p class="login-text">Finally, introduce your data for login</p>
+                <br>
+
                 <input type="text"     placeholder="Your username..." id="signup-name"     value="">
                 <input type="password" placeholder="Your password..." id="signup-password" value="">
-
-                <input type="text"     placeholder="Real name..."     id="signup-realname" value="">
-                <input type="text"     placeholder="Gender..."        id="signup-gender"   value="">
-
-                <a href="#undef" data-router="section" class="button accept btn-signup">Sign up</a>
             </form>
+
+            <a href="#signupB"  data-router="section" class="button same-line">Back</a>
+            <a href="#activity" data-router="section" class="button accept same-line btn-signup">Confirm</a>
         </article>
+
     </section>
 
 

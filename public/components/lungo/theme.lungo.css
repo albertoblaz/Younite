@@ -951,3 +951,17 @@ form textarea,
     bottom: 0;
     height: 44px;
 }
+
+.login-text {
+  font-size: 1.2em;
+}
+
+#signupA article {
+  background-color: white;
+}
+
+#signupA select,
+#signupB select,
+#signupC select { 
+  background-color: #DDD;
+}
