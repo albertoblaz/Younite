@@ -7,6 +7,8 @@ if(!internal){
     protect('sites');
     protect('events');
     protect('activity');
+    protect('petitionsFrom');
+    protect('petitionsTo');
 }
 
 protect('role');

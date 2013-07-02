@@ -5,7 +5,8 @@ protect('events');
 protect('role');
 protect('timeline');
 protect('activity');
-
+protect('petitionsFrom');
+protect('petitionsTo');
 
 this.role = 'user';
 
