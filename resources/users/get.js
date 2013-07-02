@@ -10,12 +10,15 @@ self.isFriend = _.contains(me.friends, self.id);
 
 if(!isMe(this.id)){
     hide('timeline');
+    hide('petitionsTo');
+    hide('petitionsFrom');
 }
 if(!isAllowed()){
   hide('sites');
   hide('gender');
   hide('likes');
   hide('city');
+  hide('friends');
 } else{
   if(query.hasOwnProperty('getSites')){
     dpd.sites.get({id : {$in: self.sites}}, function(sites, error){
@@ -23,8 +26,8 @@ if(!isAllowed()){
     });
   }
 }
-
 function isAllowed(){
+    if(internal) return true;
     if(self.public) return true;
     if(isMe(self.id)) return true;
     if(_.contains(self.friends, me.id)) return true;

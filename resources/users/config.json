@@ -112,6 +112,22 @@
 			"required": false,
 			"id": "activity",
 			"order": 13
+		},
+		"petitionsFrom": {
+			"name": "petitionsFrom",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "petitionsFrom",
+			"order": 14
+		},
+		"petitionsTo": {
+			"name": "petitionsTo",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "petitionsTo",
+			"order": 15
 		}
 	}
 }

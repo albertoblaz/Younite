@@ -18,11 +18,15 @@ function _pushId(id){
         });
     };
 }
-if(me.friends){
-    for(var i=0; i < me.friends.length; i++){
-        arrayFunc.push(_pushId(me.friends[i]));
+
+dpd.users.get(from, function(user, err){
+    cancelIf(err);
+    if(user.friends){
+        for(var i=0; i < user.friends.length; i++){
+            arrayFunc.push(_pushId(user.friends[i]));
+        }
+        async.parallel(array, function(err, res){
+            cancelIf(err);
+        });
     }
-    async.parallel(array, function(err, res){
-        cancelIf(err);
-    });
-}
+});
