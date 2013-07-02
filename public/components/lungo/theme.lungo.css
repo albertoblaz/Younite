@@ -637,6 +637,7 @@ article .list strong {
     display : block;
 }
 */
+/*
 aside .nav-header {
     width: 100%;
     height: 100%;
@@ -647,10 +648,10 @@ aside .nav-header {
 }
 
 aside .nav-header strong {
-  /*
+    
     font-size: 1.20em;
     padding-left: 7px;
-    */
+    
     font-size: 1.2em;
     padding-left: 7px;
     line-height: 20px;
@@ -667,7 +668,7 @@ aside .nav-header small {
     position: relative;
     top: -6px;
 }
-
+*/
 .avatar {
     border-radius: 2px;
     position: relative;
