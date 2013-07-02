@@ -69,26 +69,248 @@
                 <input type="text"     placeholder="Your username" id="login-name"     value="">
                 <input type="password" placeholder="Your password" id="login-password" value="">
 
-                <a href="#undef" data-router="section" class="button same-line btn-login">Login</a>
-                <a href="#signup" data-router="section" class="button same-line btn-signup">Sign up</a>
+                <strong>
+                    <a href="#undef" data-router="section" class="button accept anchor btn-login">Press for Login</a>
+                </strong>
             </form>
+
+            <br>
+            <strong>
+                <p class="login-text">If you wanna be in, please</p>
+                <a href="#signup1" data-router="section" class="button accept same-line btn-signup">Join us!</a>
+            </strong>
+            
         </article>
     </section>
 
 
-    <section id="signup" class="violet" data-transition="pop">
-        <article class="indented splash active violet">
-            <img src="assets/images/logo_splash.png">
+    <section id="signup1" class="signup violet" data-transition="pop">
+        <header data-title="Signup (1/5)">
+            <nav>
+                <a href="#login" data-router="section" data-icon="left" data-label="Login"></a>
+            </nav>
 
-            <form class="rounded">
-                <input type="text"     placeholder="Your username..." id="signup-name"     value="">
-                <input type="password" placeholder="Your password..." id="signup-password" value="">
+            <nav class="right">
+                <a href="#signup2" data-router="section" data-icon="right" data-label="Next"></a>
+            </nav>
+        </header>
 
-                <input type="text"     placeholder="Real name..."     id="signup-realname" value="">
-                <input type="text"     placeholder="Gender..."        id="signup-gender"   value="">
 
-                <a href="#undef" data-router="section" class="button accept btn-signup">Sign up</a>
+        <article class="active">
+
+            <form class="settings-form">
+                <!-- <fieldset style="background-color: #666;">
+                    <p class="login-text" style="margin-bottom: 10px;text-align: center;color: white;">First of all, tell us something about you :)</p>
+                </fieldset> -->
+
+                <fieldset>
+                    <label>Name </label>
+                    <input type="text" id="signup-displayname" value="">
+                </fieldset>
+
+                <fieldset>
+                    <label>Birthdate </label>
+                    <input type="date" id="signup-birthdate" value="">    
+                </fieldset>
+
+                <fieldset>
+                </fieldset>
             </form>
+
+            <form class="margined">
+                <div>
+                    <label>Gender </label>
+                    <label class="select">
+                        <select id="signup-gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div>
+                    <label>Country </label>
+                    <label class="select">
+                        <select id="signup-country">
+                            <option value="Spain">Spain</option>
+                            <option value="Sweden">Sweden</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div>
+                    <label>City </label>
+                    <label class="select">
+                        <select id="signup-city">
+                            <!-- <option value=""></option> -->
+                            <option value="Spain">Madrid</option>
+                            <option value="Sweden">Barcelona</option>
+                            <option value="Sweden">Sevilla</option>
+                            <option value="Sweden">Valencia</option>
+                            <option value="Sweden">Bilbao</option>
+                            <option value="Sweden">Ibiza</option>
+                        </select>
+                    </label>
+                </div>
+            </form>
+
+            <div class="margined">
+                <a href="#login"   data-router="section" data-icon="left"  class="button same-line left">Back to Login</a>
+                <a href="#signup2" data-router="section" data-icon="right" class="button same-line right">Next</a>
+                <div class="clear"></div>
+            </div>
+        
+        </article>
+    </section>
+
+
+    <section id="signup2" class="signup violet" data-transition="slide">
+        <header data-title="Signup (2/5)">
+            <nav>
+                <a href="#signup1" data-router="section" data-icon="left" data-label="Back"></a>
+            </nav>
+
+            <nav class="right">
+                <a href="#signup3" data-router="section" data-icon="right" data-label="Next"></a>
+            </nav>
+        </header>
+
+        <article class="active scroll list">
+            <ul>
+                <li class="anchor">What are your Music Styles?</li>
+                <li>
+                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
+                    <strong>Techno</strong>
+                    <small>bla bla bla</small>
+                </li>
+                <li>
+                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
+                    <strong>Electro</strong>
+                    <small>bla bla bla</small>
+                </li>
+                <li>
+                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
+                    <strong>Dance</strong>
+                    <small>bla bla bla</small>
+                </li>
+                <li>
+                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
+                    <strong>Pop</strong>
+                    <small>bla bla bla</small>
+                </li>
+            </ul>
+
+            <div class="margined">
+                <a href="#signup1"   data-router="section" data-icon="left"  class="button same-line left">Back</a>
+                <a href="#signup3" data-router="section" data-icon="right" class="button same-line right">Next</a>
+                <div class="clear"></div>
+            </div>
+        </article>
+    </section>
+
+
+    <section id="signup3" class="signup violet" data-transition="slide">
+        <header data-title="Signup (3/5)">
+            <nav>
+                <a href="#signup2" data-router="section" data-icon="left" data-label="Back"></a>
+            </nav>
+
+            <nav class="right">
+                <a href="#signup4" data-router="section" data-icon="right" data-label="Next"></a>
+            </nav>
+        </header>
+
+        <article class="active scroll list">
+            <ul>
+                <li class="anchor">Prefered Ambients</li>
+                <li>
+                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
+                    <strong>Techno</strong>
+                    <small>bla bla bla</small>
+                </li>
+                <li>
+                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
+                    <strong>Electro</strong>
+                    <small>bla bla bla</small>
+                </li>
+                <li>
+                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
+                    <strong>Dance</strong>
+                    <small>bla bla bla</small>
+                </li>
+                <li>
+                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
+                    <strong>Pop</strong>
+                    <small>bla bla bla</small>
+                </li>
+            </ul>
+
+            <div class="margined">
+                <a href="#signup2"   data-router="section" data-icon="left"  class="button same-line left">Back</a>
+                <a href="#signup4" data-router="section" data-icon="right" class="button same-line right">Next</a>
+                <div class="clear"></div>
+            </div>            
+        </article>
+    </section>
+
+
+    <section id="signup4" class="signup violet" data-transition="slide">
+        <header data-title="Signup (4/5)">
+            <nav>
+                <a href="#signup3" data-router="section" data-icon="left" data-label="Back"></a>
+            </nav>
+
+            <nav class="right">
+                <a href="#signup5" data-router="section" data-icon="right" data-label="Next"></a>
+            </nav>
+        </header>
+
+        <article class="active scroll list">
+            <div class="margined">
+                <p>Select a photo to display in your profile</p>
+                <br>
+
+                <p>Describe yourself briefly</p>
+                <br>
+                <form>
+                    <label>A short bio</label>
+                    <textarea id="signup-bio" cols="30" rows="10"></textarea>
+                </form>
+
+                <a href="#signup3" data-router="section" data-icon="left"  class="button same-line left">Back</a>
+                <a href="#signup5" data-router="section" data-icon="right" class="button same-line right">Next</a>
+                <div class="clear"></div>
+            </div>
+        </article>
+    </section>
+
+
+    <section id="signup5" class="signup violet" data-transition="slide">
+        <header data-title="Signup (5/5)">
+            <nav>
+                <a href="#signup3" data-router="section" data-icon="left" data-label="Back"></a>
+            </nav>
+
+            <nav class="right">
+                <a href="#activity" data-router="section" data-icon="check" data-label="Confirm"></a>
+            </nav>
+        </header>
+
+        <article class="active scroll list">
+            <form class="margined rounded">
+                <p class="login-text">Finally, introduce your data for login</p>
+                <br>
+
+                <label>Your Username</label>
+                <input type="text"     placeholder="Your username..." id="signup-name"     value="">
+
+                <label>Your Password</label>
+                <input type="password" placeholder="Your password..." id="signup-password" value="">
+            </form>
+
+            <div class="margined">
+                <a href="#activity" data-router="section" class="button anchor accept btn-signup">Confirm</a>
+            </div>
         </article>
     </section>
 
