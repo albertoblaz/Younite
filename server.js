@@ -10,7 +10,7 @@ var db_url = url.parse(
 
 var options = {
     port: process.env.PORT || 3000,
-    env: 'production',
+ //   env: 'production',
     db: {
         "host": db_url.hostname,
         "port": parseInt(db_url.port),
