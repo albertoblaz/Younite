@@ -13,5 +13,3 @@ if(!internal){
 
 protect('role');
 protect('timeline');
-
-var _ = require('underscore');

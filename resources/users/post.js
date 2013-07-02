@@ -10,7 +10,7 @@ protect('petitionsTo');
 
 this.role = 'user';
 
-dpd.timeline.post({this.id}, function(timeline, error){
+dpd.timeline.post({user : this.id}, function(timeline, error){
     cancelIf(error);
     this.timeline = timeline.id;
 });
