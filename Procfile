@@ -1,1 +1,1 @@
-./node_modules/deployd/bin/dpd
+web: node server
