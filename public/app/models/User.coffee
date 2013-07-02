@@ -1,12 +1,15 @@
 class App.User extends Monocle.Model
 
-    @fields "displayName", "picture", "gender", "city", "public", "likes", "birthday", "sites", "friends", "events", "bio", "role", "timeline"
+    @fields "id", "username", "password", "displayName", "picture", "gender", "city", "public", 
+    		"likes", "birthday", "sites", "friends", "events", "bio", "role", "timeline", "activity"
 
 
     constructor: (data) ->
-        print data
+        console.log data
 
 
-    validate : ->
-        unless @name
-            "name is required"
+    validate: ->
+    	unless @id
+    		"id is required"
+    	unless @username
+        	"name is required"

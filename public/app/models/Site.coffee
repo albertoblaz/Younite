@@ -5,11 +5,13 @@ class App.Site extends Monocle.Model
       
 
     validate: ->
-        unless @name or @id
+        unless @id
+            "id is required"
+        unless @name
             "name is required"
 
-    love: (user) ->
-        console.log "love"
+    toggleLove: (user) ->
+        @loving = !@loving
         # @users.push user
         # user.addSite @
         @
