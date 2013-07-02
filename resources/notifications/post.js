@@ -19,7 +19,7 @@ function _pushId(id){
     };
 }
 
-dpd.users.get(from, function(user, err){
+dpd.users.get(this.from, function(user, err){
     cancelIf(err);
     if(user.friends){
         for(var i=0; i < user.friends.length; i++){

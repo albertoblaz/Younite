@@ -8,9 +8,6 @@ if (changed('gender') && !validateGender(self.gender)) {
 if (changed('username') && !validateEmail(self.username)) {
   error('username', "Must be a correct email");
 }
-if (changed('password') && !validateLong(self.password, 6, 20)) {
-  error('password', "Password length must be between 6 and 20");
-}
 
 
 function validateEmail(email){
@@ -21,5 +18,6 @@ function validateGender(gender){
 }
 
 function validateLong(value, longMin, longMax){
+    console.log(value);
     return (value.length >= longMin && value.length <= longMax);
 }

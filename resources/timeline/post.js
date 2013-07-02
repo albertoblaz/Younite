@@ -1,4 +1,4 @@
-cancelUnless(me && internal, "You must be logged", 401);
+cancelUnless(internal, "hola");
 
 protect('timeline');
 

@@ -4,6 +4,8 @@ if (!me) cancel("You must be logged in");
 
 var _ = require('underscore');
 
+cancelIf(_.contains(me.friends, user),"Already added",400);
+
 dpd.users.get(user, function(result, err) {
     cancelIf(err);
     if(_.contains(me.petitionsFrom)){
