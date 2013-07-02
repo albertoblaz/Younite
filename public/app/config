@@ -12,12 +12,20 @@ models/User.coffee
 views/ActivityView.coffee
 views/SiteView.coffee
 
+controllers/NavController.coffee
 controllers/ActivityController.coffee
-controllers/HelpController.coffee
+controllers/PartiesController.coffee
+controllers/SitesController.coffee
 controllers/MapController.coffee
+controllers/UserController.coffee
+controllers/FriendsController.coffee
+controllers/SettingsController.coffee
+controllers/HelpController.coffee
+
+controllers/PartyController.coffee
+controllers/SiteController.coffee
+
 controllers/LoginController.coffee
 controllers/SignupController.coffee
-controllers/SitesController.coffee
-controllers/UserController.coffee
 
 Main.coffee
