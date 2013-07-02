@@ -1,0 +1,1 @@
+class App.FriendsController extends Monocle.Controller
