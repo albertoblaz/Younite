@@ -1,53 +1,64 @@
 class App.SignupController extends Monocle.Controller
 
     elements:
-        "#signup-name"     : "name"
-        "#signup-password" : "pass"
-        "#signup-realname" : "realname"
-        "#signup-gender"   : "gender"
+        # Signup 1
+        "#signup-name"      : "displayName"
+        "#signup-birthdate" : "birthday"  # TODO cambiar por birthdate en el server
+        "#signup-gender"    : "gender"
+        "#signup-country"   : "country"
+        "#signup-city"      : "city"
+
+        # Signup 2
+        # "#signup-music"     : "music"
+
+        # Signup 3
+        # "#signup-ambient"   : "ambient"
+
+        # Signup 4
+        # "#signup-picture"   : "picture"
+        "#signup-bio"       : "bio"
+
+        # Signup 5
+        "#signup-username"  : "username"
+        "#signup-password"  : "password"
 
     events:
         "tap .btn-signup" : "onSignup"
 
 
+    constructor: ->
+        super
+
+
     checkData: ->
-        # TODO pending for improvements
         data = {}
-        for e in ['name', 'pass', 'realname', 'gender']
-            str = @[e].val()
-            if not str
-                @showError()
-                break
-            else
-                data[e] = str
+        data.picture = "je"
+        # Required data
+        data.public = true
+        data.likes = []
+
+        for k, v of @elements
+            data[v] = @[v].val()
+
+        console.log data
         data
 
 
     onSignup: (event) ->
-        event.preventDefault()
+        event.preventDefault() if event
         data = @checkData()
-        res = App.StorageManager.signup data
-        if not res
-            @showError()
-        else
-            @showSuccess()
 
+        p = App.Connector.signup data
 
-    showSuccess: ->
-        Lungo.Notification.success(
-            "Success",                                  # Title
-            "User signed up successfully!",             # Description
-            "check",                                    # Icon
-            2,                                          # Time on screen
-            () -> Lungo.Router.section('#activity')     # Callback
-        )
+        p.done (data) =>
+            console.log data
+            App.Delegate.boot()
+            App.Utils.showSuccess App.Messages.UserCreated, ->
+                Lungo.Router.section('#activity')
 
-
-    showError: ->
-        Lungo.Notification.error(
-            "Error",                                    # Title
-            "Signup failed :(",                         # Description
-            "cancel",                                   # Icon
-            2                                           # Time on screen
-        )
+        p.fail App.Utils.fail
+        # p.fail (xhr) =>
+            # # App.Utils.showError App.Messages.SignupFailed
+            # json = JSON.parse err.responseText
+            # App.Utils.showError "#{k} #{v}" for k, v of json.errors
 

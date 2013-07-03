@@ -1,6 +1,6 @@
 class App.User extends Monocle.Model
 
-    @fields "id", "username", "password", "displayName", "picture", "gender", "city", "public", 
+    @fields "id", "username", "password", "displayName", "picture", "gender", "city", "public",
     		"likes", "birthday", "sites", "friends", "events", "bio", "role", "timeline", "activity"
 
 
@@ -13,3 +13,9 @@ class App.User extends Monocle.Model
     		"id is required"
     	unless @username
         	"name is required"
+
+
+    delete: ->
+        App.Storage.delete()
+        App.Connector.delete()
+        App.Delegate.reboot()

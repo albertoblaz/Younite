@@ -1,9 +1,8 @@
-auxiliary/Exceptions.coffee
+auxiliary/Messages.coffee
 auxiliary/Utils.coffee
 
-auxiliary/AuthStorage.coffee
-auxiliary/AuthRemote.coffee
-auxiliary/Auth.coffee
+auxiliary/Connector.coffee
+auxiliary/Storage.coffee
 
 models/Activity.coffee
 models/Site.coffee
@@ -25,7 +24,10 @@ controllers/HelpController.coffee
 controllers/PartyController.coffee
 controllers/SiteController.coffee
 
-controllers/LoginController.coffee
+controllers/LoginDirectController.coffee
+controllers/LoginFormController.coffee
+controllers/LoginListController.coffee
 controllers/SignupController.coffee
 
+auxiliary/Delegate.coffee
 Main.coffee

@@ -10,29 +10,29 @@ class App.UserController extends Monocle.Controller
 		".bio"     : "bio"
 
 	events:
-		# "load #profile" : "onLoad"
+		"load #profile" : "onLoad"
 		"tap .taste"    : "onTapTaste"
 
 
 	constructor: ->
+		super
 		@downloadMe()
-
-		$$('#profile').on "load", (event) =>
-			@onLoad event
 
 
 	download: (id) ->
 
 
 	downloadMe: ->
+		console.log "/users/me"
 		p = $.get "/users/me"
 
 		p.done (data) =>
-    		App.Me = new App.User data
-    		App.Me.save()
-    		@render App.Me
+			console.log data
+			App.Me = new App.User data
+			App.Me.save()
+			@render App.Me
 
-		p.fail (err) => 
+		p.fail (err) =>
 			console.log err
 			# TODO
 			throw "Not user"
@@ -46,8 +46,8 @@ class App.UserController extends Monocle.Controller
 		# Si no, es el usuario pulsado, y por eso hay que buscarle
 		if event.srcElement.search "#profile" is not -1
 			@render App.Me
-		else 
-			@render App.CurrentUser 
+		else
+			@render App.CurrentUser
 
 
 	onTapTaste: (event) ->

@@ -3,7 +3,7 @@ class App.AuthRemote
     URIS:
         login : "/users/login"
         logout: "/users/logout"
-        signup: "/users/signup"
+        signup: "/users"
 
 
     login: (user, success, failure) ->
@@ -23,13 +23,16 @@ class App.AuthRemote
 
         onSucc = (data) ->
             console.log "Callback normal", data
-            if data then success? data else failure? data
+            success? data
 
         onFail = (err) ->
             console.log "Callback de error", err
             failure? err
 
         # jQuery works!
-        p = $.post uri, user
+        $.ajaxSetup
+            "contentType": "application/json"
+
+        p = $.post uri, JSON.stringify user
         p.done onSucc
         p.fail onFail

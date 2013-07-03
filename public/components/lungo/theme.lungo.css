@@ -648,10 +648,10 @@ aside .nav-header {
 }
 
 aside .nav-header strong {
-    
+
     font-size: 1.20em;
     padding-left: 7px;
-    
+
     font-size: 1.2em;
     padding-left: 7px;
     line-height: 20px;
@@ -960,10 +960,14 @@ form textarea,
   background-color: white;
 }
 
-#signup1 select { 
+#signup1 select {
   background-color: #DDD;
 }
 
 .signup label {
   font-size: 1.2em;
+}
+
+.splash .button {
+  margin-top: 0;
 }

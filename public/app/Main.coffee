@@ -1,13 +1,13 @@
-Lungo.ready ->
+signupRight = ->
+    App.Storage.signup
+        username: "albertoblaz@gmail.com"
+        password: "albertoblaz123"
 
-    console.log "Ready!!"
-    # window.localStorage.clear()
+signupWrong = ->
+    App.Storage.signup
+        username: "albertobqlaz@gmail.com"
+        password: "albertoblaz123"
 
-    """
-    App.Auth.signup
-        username: "asd"
-        password: "asd"
-    """
-
-    new App.LoginController "section#login"
-    new App.SignupController "section#signup"
+window.localStorage.clear()
+signupRight()
+# signupWrong()

@@ -1,21 +1,17 @@
-class App.AuthStorage
+class Storage
 
     KEYS:
         users: 'users'
 
 
     constructor: (@users = []) ->
-        json = window.localStorage.getItem @KEYS.users
-        data = JSON.parse json
-        @users = data if data
+        @retrieve()
 
-        # TESTING
-        window.localStorage.clear()
-        @signup
-            username: "asd"
-            password: "asd123"
-        console.log @users
-        # END TESTING
+
+    retrieve: ->
+        json = window.localStorage.getItem @KEYS.users
+        data = JSON.parse json if json
+        @users = data if data
         @
 
 
@@ -35,3 +31,4 @@ class App.AuthStorage
         throw App.Exceptions.TooMuchUsersStorage if arr.length > 1
         arr[0]
 
+App.Storage = new Storage
