@@ -9,5 +9,5 @@ signupWrong = ->
         password: "albertoblaz123"
 
 window.localStorage.clear()
-signupRight()
+# signupRight()
 # signupWrong()
