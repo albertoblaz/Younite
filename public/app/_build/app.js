@@ -162,7 +162,7 @@
       return _ref1;
     }
 
-    Site.fields("id", "name", "description", "city", "address", "picture", "style", "users", "events", "owner", "loving", "recommended");
+    Site.fields("id", "name", "description", "city", "address", "picture", "style", "users", "events", "owner", "loved", "recommended");
 
     Site.prototype.validate = function() {
       if (!this.id) {
@@ -174,7 +174,8 @@
     };
 
     Site.prototype.toggleLove = function(user) {
-      this.loving = !this.loving;
+      this.loved = !this.loved;
+      console.log(this.loved);
       return this;
     };
 
@@ -219,11 +220,6 @@
 
     SiteView.prototype.template_url = "app/templates/SiteView.mustache";
 
-    SiteView.prototype.elements = {
-      "li.selectable": "li",
-      ".button": "button"
-    };
-
     SiteView.prototype.events = {
       "tap .button": "onLove",
       "tap li": "onTap"
@@ -231,12 +227,16 @@
 
     SiteView.prototype.onTap = function(event) {
       console.log("onTap");
-      console.log(window.location.host + ("/sites/" + this.model.name));
-      return window.location.href = window.location.host + ("/sites/" + this.model.name);
+      return Monocle.Route.navigate("/sites/" + this.model.id);
     };
 
     SiteView.prototype.onLove = function(event) {
-      return console.log("onLove");
+      event.preventDefault();
+      event.stopPropagation();
+      console.log("onLove");
+      this.model.toggleLove();
+      console.log(this.model);
+      return this.remove();
     };
 
     return SiteView;
@@ -363,8 +363,7 @@
       view = new App.SiteView({
         model: site
       });
-      site.loving = true;
-      if (site.loving) {
+      if (site.loved) {
         view.container = this.fav;
         return view.append(site);
       } else if (site.recommended) {
@@ -597,7 +596,7 @@
     function SiteController() {
       SiteController.__super__.constructor.apply(this, arguments);
       this.routes({
-        "/sites/:name": this.viewSiteProfile
+        "/sites/:id": this.viewSiteProfile
       });
       Monocle.Route.listen();
     }

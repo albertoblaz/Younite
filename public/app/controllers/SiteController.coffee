@@ -13,7 +13,7 @@ class App.SiteController extends Monocle.Controller
 
 		# Routing
 		@routes
-		   "/sites/:name" : @viewSiteProfile
+		   "/sites/:id" : @viewSiteProfile
 		Monocle.Route.listen()
 
 	onLove: ->

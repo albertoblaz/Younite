@@ -2,13 +2,9 @@ class App.SiteView extends Monocle.View
 
     template_url: "app/templates/SiteView.mustache"
 
-    elements:
-        "li.selectable" : "li"
-        ".button"       : "button"
-
     events:
-        "tap .button" : "onLove"
-        "tap li"      : "onTap"
+        "tap .button"   : "onLove"
+        "tap li" : "onTap"
 
 
     # constructor: ->
@@ -18,12 +14,13 @@ class App.SiteView extends Monocle.View
 
     onTap: (event) =>
         console.log "onTap"
-        console.log window.location.host + "/sites/#{@model.name}"
-        window.location.href = window.location.host + "/sites/#{@model.name}"
-        # App.Currents.Site.update @model.id
+        Monocle.Route.navigate "/sites/#{@model.id}"
 
 
     onLove: (event) ->
+        event.preventDefault()
+        event.stopPropagation()
         console.log "onLove"
-        # @model.toggleLove()
-        # @remove()
+        @model.toggleLove()
+        console.log @model
+        @remove()

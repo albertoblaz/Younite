@@ -54,11 +54,7 @@ class App.SitesController extends Monocle.Controller
         console.log "You've change #{site.name}!"
         view = new App.SiteView model: site
 
-        # TESTING
-        site.loving = true
-        # END TESTING
-
-        if site.loving
+        if site.loved
             view.container = @fav
             view.append site
         else if site.recommended

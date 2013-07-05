@@ -1,20 +1,20 @@
 <li class="arrow selectable thumb">
-    <img src="{{picture}}" class="icon">
+    <img src="{{picture}}" class="icon tappable">
 
-    {{#loving}}
+    {{#loved}}
     <a href="#" class="accept button right">
         <span class="icon heart"></span>
         <abbr>Loving</abbr>
     </a>
-    {{/loving}}
-    {{^loving}}
+    {{/loved}}
+    {{^loved}}
     <a href="#" class="violet button right">
         <span class="icon heart-full"></span>
         <abbr>Love?</abbr>
     </a>
-    {{/loving}}
+    {{/loved}}
 
-    <a href="#">
+    <a href="#" class="tappable">
         <strong>{{name}}</strong>
         <small>{{description}}</small>
     </a>
