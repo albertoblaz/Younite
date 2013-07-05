@@ -1,18 +1,22 @@
 class App.User extends Monocle.Model
 
-    @fields "id", "username", "password", "displayName", "picture", "gender", "city", "public",
-    		"likes", "birthday", "sites", "friends", "events", "bio", "role", "timeline", "activity"
+    @fields "id",
+            "username", "password", # TODO que la API devuelva estos
+            "displayName", "picture", "gender", "city", "public",
+            "likes", "birthday", "sites", "friends", "events", "bio", "role", "timeline", "activity"
+            "music", "ambient", "maxprice", "age" # TODO que la API devuelva estos
 
 
-    constructor: (data) ->
-        console.log data
+    # constructor: (data) ->
+    #     super
 
 
     validate: ->
     	unless @id
-    		"id is required"
-    	unless @username
-        	"name is required"
+    	   "id is required"
+    	# TODO que la API devuelva esto tambien
+        # unless @username
+        #     "name is required"
 
 
     delete: ->

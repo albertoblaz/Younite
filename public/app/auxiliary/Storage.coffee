@@ -21,6 +21,10 @@ class Storage
 
     signup: (user) ->
         if not @lookup user
+
+            # TODO
+            # user.password = @encrypt user.password
+
             @users.push user
             json = JSON.stringify @users
             window.localStorage.setItem @KEYS.users, json

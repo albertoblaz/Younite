@@ -1,6 +1,7 @@
 <section id="profile" class="main" data-transition="slide">
 
-    <header data-title="Alberto Blázquez" class="violet extended">
+    <header class="violet extended">
+        <span id="displayName" class="title centered"></span>
         <nav>
             <a href="#nav" data-router="aside" data-icon="menu"></a>
         </nav>
@@ -22,24 +23,24 @@
     <article id="profile-info" class="active scroll">
 
         <figure>
-            <img class="cover" src="assets/images/covers/kapital.png" alt="">
+            <img id="picture" class="cover" src="assets/images/covers/kapital.png" alt="User's picture">
         </figure>
 
         <ul class="list margined">
             <li data-icon="music">
-                <strong>Dance, Tecno, House</strong>
+                <strong id="music">Dance, Tecno, House</strong>
                 <small>Music Style</small>
             </li>
             <li data-icon="picture">
-                <strong>Pachangueo, A, B, C</strong>
+                <strong id="ambient">Pachangueo, A, B, C</strong>
                 <small>Ambient</small>
             </li>
             <li data-icon="users">
-                <strong>22 years old</strong>
+                <strong id="age">22 years old</strong>
                 <small>Age</small>
             </li>
             <li data-icon="ticket">
-                <strong>20€ as maximum</strong>
+                <strong id="maxprice">20€ as maximum</strong>
                 <small>Price</small>
             </li>
         </ul>
@@ -47,7 +48,7 @@
         <ul class="margined list">
             <li class="dark">
                 <strong>A Short Bio</strong>
-                <p class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+                <p id="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
             </li>
         </ul>
 
@@ -56,7 +57,7 @@
 
     <article id="profile-activity" class="scroll">
 
-        <ul class="list">
+        <ul id="timeline" class="list">
             <li data-image="assets/images/friends/me.jpg" class="circle">
                 <strong>Alberto Blázquez</strong>
                 <small>Fue a la Fiesta de la Espuma (Kapital)</small>

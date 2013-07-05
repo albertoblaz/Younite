@@ -18,18 +18,14 @@ class App.SitesController extends Monocle.Controller
         App.Site.bind "delete", @bindSiteDelete
         App.Site.bind "error", @bindSiteError
 
-        # Routing
-        # @routes
-        #    "/sites/:id" : @viewProfile
-        # Monocle.Route.listen()
 
         p = $.get "/sites/"
         p.done (sites) ->
+            console.log sites
             for s in sites
                 App.Site.create s
 
-        p.fail (err) ->
-            console.error "Err: ", err
+        p.fail App.Utils.fail
 
 
     onSearch: (event) =>
@@ -39,11 +35,11 @@ class App.SitesController extends Monocle.Controller
     # bindSiteCreate: (site) =>
     #     console.log "You've created #{site.name}!"
     #     console.log site
-        
+
     #     view = new App.SiteView model: site
     #     # if site.loving
     #     # TESTING
-    #     if site.name is "hola"    
+    #     if site.name is "hola"
     #         site.loving = true
     #         view.container = @fav
     #     #else if site.recommended
@@ -52,21 +48,18 @@ class App.SitesController extends Monocle.Controller
     #         view.container = @rec
     #     # END TESTING
     #     view.append site
-        
+
 
     bindSiteChange: (site) =>
         console.log "You've change #{site.name}!"
         view = new App.SiteView model: site
 
-        # TESTING asi se ve bien como se alterna la vista entre las dos listas
-        # if site.loving is true
-        #     view.container = @fav 
-        # else
-        #     view.container = @rec 
-        # view.append site
+        # TESTING
+        site.loving = true
+        # END TESTING
 
         if site.loving
-            view.container = @fav 
+            view.container = @fav
             view.append site
         else if site.recommended
             view.container = @rec
@@ -81,6 +74,7 @@ class App.SitesController extends Monocle.Controller
         console.log "Site Error spotted, #{site}!"
 
 
-    viewProfile: (params) ->
+    viewSiteProfile: (params) ->
         console.log "View the profile of the site: #{params.id}"
+        Lungo.Router.section "#site"
 
