@@ -58,8 +58,15 @@ class App.SignupController extends Monocle.Controller
                 Lungo.Router.section('#activity')
 
         p.fail App.Utils.fail
-        # p.fail (xhr) =>
-            # # App.Utils.showError App.Messages.SignupFailed
-            # json = JSON.parse err.responseText
-            # App.Utils.showError "#{k} #{v}" for k, v of json.errors
 
+        # TODO
+        # Signup y despues login o solo signup ?
+        # p.done (data) =>
+        #     console.log data
+        #     App.Utils.showSuccess App.Messages.UserCreated, ->
+        #         q = App.Connector.login data
+        #         q.done ->
+        #             App.Delegate.boot()
+        #             Lungo.Router.section('#activity')
+        #         q.fail App.Utils.fail
+        # p.fail App.Utils.fail
