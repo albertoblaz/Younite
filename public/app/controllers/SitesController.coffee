@@ -7,33 +7,35 @@ class App.SitesController extends Monocle.Controller
 
     events:
         "click a[data-action=search]": "onSearch"
+        "load #sites" : "renderViews"
 
 
     constructor: ->
         super
+        @pendingSites=[]
 
         # Events Bounded
-        # App.Site.bind "create", @renderSite
+        App.Site.bind "create", @bindCreate
         App.Site.bind "error", @bindSiteError
-        App.Site.bind "change", @renderSite
         App.Site.bind "delete", @bindSiteDelete
 
         p = $.getJSON "/sites/"
-        p.done (sites) ->
+        p.done (sites) =>
             console.log sites
             for s in sites
                 App.Site.create s
                 # TODO Efficiency
+            App.Site.bind "change", @renderSite
 
         p.fail App.Utils.fail
 
 
-    onSearch: (event) =>
+    onSearch: (event) ->
         console.log "Searching"
 
 
-    renderSite: (site) =>
-        console.log "You've rendered #{site.name}!"
+    bindCreate: (site) =>
+        console.log "You've created #{site.name}!"
         view = new App.SiteView model: site
 
         if site.loved
@@ -42,6 +44,39 @@ class App.SitesController extends Monocle.Controller
         else if site.recommended
             view.container = @rec
             view.append site
+
+
+    bindChange: (site) =>
+        console.log "You've changed #{site.name}!"
+        view = new App.SiteView model: site
+
+        if site.loved
+            view.container = @fav
+        else if site.recommended
+            view.container = @rec
+
+        @pendingSites.push view
+
+
+    renderViews: (event) ->
+        for v in @pendingSites
+            v.model.trigger "removeSiteView"
+            v.append v.model
+        @pendingSites = []
+
+
+    renderSite: (site) =>
+        console.log "You've rendered #{site.name}!"
+        view = new App.SiteView model: site
+
+        if site.loved
+            view.container = @fav
+            # view.append site
+        else if site.recommended
+            view.container = @rec
+            # view.append site
+
+        @pendingSites.push view
 
 
     # bindSiteCreate: (site) =>

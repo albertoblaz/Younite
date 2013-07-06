@@ -177,7 +177,6 @@
     };
 
     Site.prototype.love = function(user) {
-      this.trigger("love");
       this.updateAttributes({
         loved: !this.loved
       });
@@ -225,10 +224,9 @@
     };
 
     function SiteView() {
-      this.renderLove = __bind(this.renderLove, this);
-      this.onTap = __bind(this.onTap, this);
+      this.removeSiteView = __bind(this.removeSiteView, this);
       SiteView.__super__.constructor.apply(this, arguments);
-      App.Site.bind("love", this.renderLove);
+      App.Site.bind("removeSiteView", this.removeSiteView);
     }
 
     SiteView.prototype.onTap = function(event) {
@@ -239,11 +237,16 @@
     SiteView.prototype.onLove = function(event) {
       event.preventDefault();
       event.stopPropagation();
-      return this.model.love();
+      this.model.love();
+      return this.refresh();
     };
 
-    SiteView.prototype.renderLove = function(model) {
-      if (this.model.equal(model)) {
+    SiteView.prototype.removeSiteView = function(model) {
+      var loved, lovedContainer, wrongPlace;
+      loved = model.attributes().loved;
+      lovedContainer = this.container.parent()[0].id === "sitesfav";
+      wrongPlace = loved ^ lovedContainer;
+      if (wrongPlace && this.model.equal(model)) {
         return this.el.remove();
       }
     };
@@ -335,29 +338,32 @@
     };
 
     SitesController.prototype.events = {
-      "click a[data-action=search]": "onSearch"
+      "click a[data-action=search]": "onSearch",
+      "load #sites": "renderViews"
     };
 
     function SitesController() {
       this.bindSiteError = __bind(this.bindSiteError, this);
       this.bindSiteDelete = __bind(this.bindSiteDelete, this);
       this.renderSite = __bind(this.renderSite, this);
-      this.onSearch = __bind(this.onSearch, this);
-      var p;
+      this.bindChange = __bind(this.bindChange, this);
+      this.bindCreate = __bind(this.bindCreate, this);
+      var p,
+        _this = this;
       SitesController.__super__.constructor.apply(this, arguments);
+      this.pendingSites = [];
+      App.Site.bind("create", this.bindCreate);
       App.Site.bind("error", this.bindSiteError);
-      App.Site.bind("change", this.renderSite);
       App.Site.bind("delete", this.bindSiteDelete);
       p = $.getJSON("/sites/");
       p.done(function(sites) {
-        var s, _i, _len, _results;
+        var s, _i, _len;
         console.log(sites);
-        _results = [];
         for (_i = 0, _len = sites.length; _i < _len; _i++) {
           s = sites[_i];
-          _results.push(App.Site.create(s));
+          App.Site.create(s);
         }
-        return _results;
+        return App.Site.bind("change", _this.renderSite);
       });
       p.fail(App.Utils.fail);
     }
@@ -366,9 +372,9 @@
       return console.log("Searching");
     };
 
-    SitesController.prototype.renderSite = function(site) {
+    SitesController.prototype.bindCreate = function(site) {
       var view;
-      console.log("You've rendered " + site.name + "!");
+      console.log("You've created " + site.name + "!");
       view = new App.SiteView({
         model: site
       });
@@ -379,6 +385,45 @@
         view.container = this.rec;
         return view.append(site);
       }
+    };
+
+    SitesController.prototype.bindChange = function(site) {
+      var view;
+      console.log("You've changed " + site.name + "!");
+      view = new App.SiteView({
+        model: site
+      });
+      if (site.loved) {
+        view.container = this.fav;
+      } else if (site.recommended) {
+        view.container = this.rec;
+      }
+      return this.pendingSites.push(view);
+    };
+
+    SitesController.prototype.renderViews = function(event) {
+      var v, _i, _len, _ref6;
+      _ref6 = this.pendingSites;
+      for (_i = 0, _len = _ref6.length; _i < _len; _i++) {
+        v = _ref6[_i];
+        v.model.trigger("removeSiteView");
+        v.append(v.model);
+      }
+      return this.pendingSites = [];
+    };
+
+    SitesController.prototype.renderSite = function(site) {
+      var view;
+      console.log("You've rendered " + site.name + "!");
+      view = new App.SiteView({
+        model: site
+      });
+      if (site.loved) {
+        view.container = this.fav;
+      } else if (site.recommended) {
+        view.container = this.rec;
+      }
+      return this.pendingSites.push(view);
     };
 
     SitesController.prototype.bindSiteDelete = function(site) {

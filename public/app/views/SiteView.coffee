@@ -9,10 +9,10 @@ class App.SiteView extends Monocle.View
 
     constructor: ->
         super
-        App.Site.bind "love", @renderLove
+        App.Site.bind "removeSiteView", @removeSiteView
 
 
-    onTap: (event) =>
+    onTap: (event) ->
         console.log "onTap"
         Monocle.Route.navigate "/sites/#{@model.id}"
 
@@ -21,7 +21,12 @@ class App.SiteView extends Monocle.View
         event.preventDefault()
         event.stopPropagation()
         @model.love()
+        @refresh()
 
 
-    renderLove: (model) =>
-        @el.remove() if @model.equal model
+    removeSiteView: (model) =>
+        loved = model.attributes().loved
+        lovedContainer = @container.parent()[0].id is "sitesfav"
+        wrongPlace =  loved ^ lovedContainer
+        @el.remove() if wrongPlace and @model.equal model
+
