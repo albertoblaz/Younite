@@ -3,13 +3,13 @@ class App.SiteView extends Monocle.View
     template_url: "app/templates/SiteView.mustache"
 
     events:
-        "tap .button"   : "onLove"
+        "tap .button" : "onLove"
         "tap li" : "onTap"
 
 
-    # constructor: ->
-    #     super
-    #     @li.on "tap", @onTap
+    constructor: ->
+        super
+        App.Site.bind "love", @renderLove
 
 
     onTap: (event) =>
@@ -20,7 +20,8 @@ class App.SiteView extends Monocle.View
     onLove: (event) ->
         event.preventDefault()
         event.stopPropagation()
-        console.log "onLove"
-        @model.toggleLove()
-        console.log @model
-        @remove()
+        @model.love()
+
+
+    renderLove: (model) =>
+        @el.remove() if @model.equal model

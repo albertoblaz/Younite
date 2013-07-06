@@ -47,7 +47,8 @@ class App.SignupController extends Monocle.Controller
     onSignup: (event) ->
         event.preventDefault() if event
         data = @checkData()
-
+        console.log "onSignup"
+        console.log data
         p = App.Connector.signup data
 
         p.done (data) =>

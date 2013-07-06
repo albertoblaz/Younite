@@ -1,13 +1,14 @@
 <section id="site" data-transition="slide">
 
-    <header data-title="Kapital" class="violet extended">
+    <header class="violet extended">
+        <span id="name" class="title centered"></span>
+
         <nav>
             <a href="#back" data-router="section" data-icon="left" data-label="Sites"></a>
         </nav>
 
         <nav class="right">
-            <a href="#follow" data-icon="heart-full" data-label="Love?"></a>
-            <!-- <a href="#follow" data-icon="heart" data-label="Loving"></a> -->
+            <a href="#" id="love" data-icon="heart-full" data-label="Love?"></a>
         </nav>
     </header>
 
@@ -23,24 +24,24 @@
     <article id="site-info" class="active scroll">
 
         <figure>
-            <img class="cover" src="assets/images/covers/kapital.png" alt="Kapital Cover Photo">
+            <img id="picture" class="cover" src="assets/images/covers/kapital.png" alt="Kapital Cover Photo">
         </figure>
 
         <ul class="margined list">
             <li data-icon="music">
-                <strong>Dance, Tecno, House</strong>
+                <strong id="music">Dance, Tecno, House</strong>
                 <small>Music Style</small>
             </li>
             <li data-icon="picture">
-                <strong>Pachangueo, A, B, C</strong>
+                <strong id="ambient">Pachangueo, A, B, C</strong>
                 <small>Ambient</small>
             </li>
             <li data-icon="users">
-                <strong>18 - 30 years old</strong>
+                <strong id="age">18 - 30 years old</strong>
                 <small>Age Interval</small>
             </li>
             <li data-icon="ticket">
-                <strong>20€ or 13€ by lists</strong>
+                <strong id="maxprice">20€ or 13€ by lists</strong>
                 <small>Price</small>
             </li>
         </ul>
@@ -48,11 +49,11 @@
         <ul class="margined list">
             <li class="dark">
                 <strong>Description</strong>
-                <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
             </li>
         </ul>
 
-        <ul class="margined list">
+        <ul id="comments" class="margined list">
             <li class="anchor">Friends' Comments</li>
             <li data-image="assets/images/friends/friend3.jpg" class="thumb arrow selectable">
                 <strong>María Fernández</strong>

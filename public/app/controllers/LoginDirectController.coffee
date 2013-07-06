@@ -10,10 +10,9 @@ class App.LoginDirectController extends Monocle.Controller
                 App.Delegate.boot()
                 Lungo.Router.section '#activity'
             p.fail (xhr) =>
-                console.log xhr
                 # App.Utils.showError App.Messages.AuthenticationFailed
                 App.Utils.fail xhr
-                Lungo.Router.section "#login-form"
+                App.Delegate.reboot()
         else
             @onSuccess()    # Create the rest of app modules, but with offline data
 
