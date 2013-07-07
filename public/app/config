@@ -1,4 +1,5 @@
 auxiliary/Messages.coffee
+auxiliary/Native.coffee
 auxiliary/Utils.coffee
 
 auxiliary/Connector.coffee
