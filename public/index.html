@@ -216,22 +216,28 @@
             <ul id="signup-music">
                 <li class="anchor">What are your Music Styles?</li>
                 <li>
-                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
+                    <a href="#" class="accept small button right" data-icon="check" data-label="Yeah!"></a>
                     <strong>Techno</strong>
                     <small>bla bla bla</small>
                 </li>
                 <li>
-                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
+                    <a href="#" class="violet small button right">
+                        <strong>Like</strong>
+                        <span class="icon help" style="margin-left: 5px !important; margin-right: 0 !important;"></span>
+                    </a>
                     <strong>Electro</strong>
                     <small>bla bla bla</small>
                 </li>
                 <li>
-                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
+                    <a href="#" class="violet small button right">
+                        <strong>Like</strong>
+                        <span class="icon help" style="margin-left: 5px !important; margin-right: 0 !important;"></span>
+                    </a>
                     <strong>Dance</strong>
                     <small>bla bla bla</small>
                 </li>
                 <li>
-                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
+                    <a href="#" class="accept small button right" data-icon="check" data-label="Yeah!"></a>
                     <strong>Pop</strong>
                     <small>bla bla bla</small>
                 </li>
@@ -261,29 +267,35 @@
             <ul id="signup-ambient">
                 <li class="anchor">Prefered Ambients</li>
                 <li>
-                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
+                    <a href="#" class="accept small button right" data-icon="check" data-label="Yeah!"></a>
                     <strong>Techno</strong>
                     <small>bla bla bla</small>
                 </li>
                 <li>
-                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
+                    <a href="#" class="violet small button right">
+                        <strong>Like</strong>
+                        <span class="icon help" style="margin-left: 5px !important; margin-right: 0 !important;"></span>
+                    </a>
                     <strong>Electro</strong>
                     <small>bla bla bla</small>
                 </li>
                 <li>
-                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
+                    <a href="#" class="violet small button right">
+                        <strong>Like</strong>
+                        <span class="icon help" style="margin-left: 5px !important; margin-right: 0 !important;"></span>
+                    </a>
                     <strong>Dance</strong>
                     <small>bla bla bla</small>
                 </li>
                 <li>
-                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
+                    <a href="#" class="accept small button right" data-icon="check" data-label="Yeah!"></a>
                     <strong>Pop</strong>
                     <small>bla bla bla</small>
                 </li>
             </ul>
 
             <div class="margined">
-                <a href="#signup2"   data-router="section" data-icon="left"  class="button same-line left">Back</a>
+                <a href="#signup2" data-router="section" data-icon="left"  class="button same-line left">Back</a>
                 <a href="#signup4" data-router="section" data-icon="right" class="button same-line right">Next</a>
                 <div class="clear"></div>
             </div>
@@ -353,7 +365,7 @@
     </section>
 
 
-    <!-- Lungo - Dependencies -->
+    <!-- App Dependencies -->
     <script src="components/quojs/quo.js"></script>
     <script src="components/lungo/lungo.js"></script>
     <script src="components/monocle/monocle.js"></script>
@@ -386,8 +398,12 @@
     <!-- Events Handlers -->
     <script type="text/javascript" src="assets/events/swipe-gestures.js"></script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <!-- Temporary libs -->
+    <script type="text/javascript" src="components/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="components/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="node_modules/deployd/bin/dpd.js"></script>
 
+    <!-- App -->
     <script type="text/javascript" src="app/_build/app.js"></script>
 
 </body>
