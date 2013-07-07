@@ -12,7 +12,7 @@ class App.SiteController extends Monocle.Controller
 		"#description" : "description"
 		"#comments"    : "comments"
 
-		"#love": "love"
+		"#love"        : "love"
 
 
 	events:
@@ -31,28 +31,32 @@ class App.SiteController extends Monocle.Controller
 		Monocle.Route.listen()
 
 
-	viewSiteProfile: (params) ->
-        console.log "View the profile of the site: #{params.id}"
-        site = App.Site.findBy "id", params.id
-        @currentSite = site
+	onLove: ->
+		@currentSite.love()
+		@renderLove @currentSite
 
-        # site = @download params.id if not site
-        @render site
-        Lungo.Router.section "#site"
+
+	viewSiteProfile: (params) ->
+		site = App.Site.findBy "id", params.id
+		site = @download params.id if not site
+
+		@render site
+		@currentSite = site
+		Lungo.Router.section "#site"
 
 
 	render: (site) ->
 		@name.text site.name
 		@picture[0].src = site.picture
 
-		@renderLove()
+		@renderLove site
 
 
-	renderLove: ->
+	renderLove: (site) ->
 		label = @love.find "abbr"
 		icon  = @love.find ".icon"
 
-		if @currentSite.attributes().loved
+		if site.attributes().loved
 			label.text "Loving"
 			icon.removeClass("heart-full").addClass("heart")
 		else
@@ -60,13 +64,8 @@ class App.SiteController extends Monocle.Controller
 			icon.removeClass("heart").addClass("heart-full")
 
 
-
-	onLove: ->
-		@currentSite.love()
-		@renderLove()
-
-
 	download: (id) ->
+		console.log "download site #{id}"
 		# GET site usando el id y mostrar datos
 		data = App.Connector.sites.get(id)
 		App.Site.create data
