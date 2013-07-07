@@ -6,13 +6,15 @@ class App.SitesController extends Monocle.Controller
 
 
     events:
-        "click a[data-action=search]": "onSearch"
-        "load #sites" : "renderViews"
+        "tap #search" : "onSearch"
+        "load #sites" : "onLoad"
+
+
+    pendingSites: []
 
 
     constructor: ->
         super
-        @pendingSites=[]
 
         # Events Bounded
         App.Site.bind "create", @bindCreate
@@ -24,10 +26,21 @@ class App.SitesController extends Monocle.Controller
             console.log sites
             for s in sites
                 App.Site.create s
+            App.Site.bind "change", @bindChange
                 # TODO Efficiency
-            App.Site.bind "change", @renderSite
 
         p.fail App.Utils.fail
+
+
+    onLoad: (event) ->
+        uniqSites = []
+        uniqSites.push s for s in @pendingSites when not uniqSites.contains s
+
+        for s in uniqSites
+            s.trigger "removeSiteView"
+            @bindCreate s
+
+        @pendingSites = []
 
 
     onSearch: (event) ->
@@ -48,70 +61,13 @@ class App.SitesController extends Monocle.Controller
 
     bindChange: (site) =>
         console.log "You've changed #{site.name}!"
-        view = new App.SiteView model: site
-
-        if site.loved
-            view.container = @fav
-        else if site.recommended
-            view.container = @rec
-
-        @pendingSites.push view
-
-
-    renderViews: (event) ->
-        for v in @pendingSites
-            v.model.trigger "removeSiteView"
-            v.append v.model
-        @pendingSites = []
-
-
-    renderSite: (site) =>
-        console.log "You've rendered #{site.name}!"
-        view = new App.SiteView model: site
-
-        if site.loved
-            view.container = @fav
-            # view.append site
-        else if site.recommended
-            view.container = @rec
-            # view.append site
-
-        @pendingSites.push view
-
-
-    # bindSiteCreate: (site) =>
-    #     console.log "You've created #{site.name}!"
-    #     view = new App.SiteView model: site
-
-    #     if site.loved
-    #         view.container = @fav
-    #         view.append site
-    #     else if site.recommended
-    #         view.container = @rec
-    #         view.append site
-
-
-    # bindSiteChange: (site) =>
-    #     console.log "You've change #{site.name}!"
-    #     view = new App.SiteView model: site
-
-    #     if site.loved
-    #         view.container = @fav
-    #         view.append site
-    #     else if site.recommended
-    #         view.container = @rec
-    #         view.append site
+        @pendingSites.push site
 
 
     bindSiteDelete: (site) =>
-        console.log "You've deleted #{site.name}!"
+        App.Utils.showError "Deleting the site #{site.name}"
+        throw "You've deleted #{site.name}!, #{site}"
 
 
     bindSiteError: (site) =>
-        console.log "Site Error spotted, #{site}!"
-
-
-    viewSiteProfile: (params) ->
-        console.log "View the profile of the site: #{params.id}"
-        Lungo.Router.section "#site"
-
+        App.Utils.showError "Site error spotted, #{site.name}!"

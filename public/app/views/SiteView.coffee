@@ -25,8 +25,4 @@ class App.SiteView extends Monocle.View
 
 
     removeSiteView: (model) =>
-        loved = model.attributes().loved
-        lovedContainer = @container.parent()[0].id is "sitesfav"
-        wrongPlace =  loved ^ lovedContainer
-        @el.remove() if wrongPlace and @model.equal model
-
+        @el.remove() if @model.equal model
