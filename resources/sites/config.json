@@ -41,12 +41,12 @@
 			"id": "picture",
 			"order": 4
 		},
-		"style": {
-			"name": "style",
+		"music": {
+			"name": "music",
 			"type": "array",
 			"typeLabel": "array",
 			"required": true,
-			"id": "style",
+			"id": "music",
 			"order": 5
 		},
 		"users": {
