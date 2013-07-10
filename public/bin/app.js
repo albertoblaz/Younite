@@ -504,13 +504,13 @@
     };
 
     UserController.prototype.render = function(user) {
-      user = user.attributes();
-      this.displayName.text(user.displayName);
-      this.music.text(user.music);
-      this.ambient.text(user.ambient);
-      this.age.text(user.birthday);
-      this.maxprice.text(user.maxprice);
-      return this.bio.text(user.bio);
+      var prop, _i, _len, _ref7;
+      _ref7 = ["displayName", "music", "ambient", "age", "maxprice", "bio"];
+      for (_i = 0, _len = _ref7.length; _i < _len; _i++) {
+        prop = _ref7[_i];
+        this[prop].text(user[prop]);
+      }
+      return this.picture[0].src = user.picture;
     };
 
     UserController.prototype.download = function(id) {
@@ -739,8 +739,6 @@
           App.Utils.fail(xhr);
           return App.Delegate.reboot();
         });
-      } else {
-        this.onSuccess();
       }
     }
 
@@ -950,30 +948,22 @@
   App.Storage = new Storage;
 
   Delegate = (function() {
+    var showLoginDirect, showLoginForm, showLoginList;
+
     function Delegate() {
       var _this = this;
       Lungo.ready(function() {
         var users;
         users = App.Storage.users;
         if (!users || users.length === 0) {
-          return _this.showLoginForm();
+          return showLoginForm();
         } else if (users.length === 1) {
-          return _this.showLoginDirect();
+          return showLoginDirect();
         } else if (users.length > 1) {
-          return _this.showLoginList();
+          return showLoginList();
         }
       });
     }
-
-    Delegate.prototype.reboot = function() {
-      var users;
-      users = App.Storage.users;
-      if (users.length > 1) {
-        return this.showLoginList();
-      } else {
-        return this.showLoginForm();
-      }
-    };
 
     Delegate.prototype.boot = function() {
       new App.NavController("aside#nav");
@@ -986,19 +976,30 @@
       new App.SettingsController("section#settings");
       new App.HelpController("section#help");
       new App.PartyController("section#party");
-      return new App.SiteController("section#site");
+      new App.SiteController("section#site");
+      return this;
     };
 
-    Delegate.prototype.showLoginForm = function() {
+    Delegate.prototype.reboot = function() {
+      var users;
+      users = App.Storage.users;
+      if (users.length > 1) {
+        return showLoginList();
+      } else {
+        return showLoginForm();
+      }
+    };
+
+    showLoginForm = function() {
       new App.LoginFormController("section#login-form");
       return new App.SignupController("section.signup");
     };
 
-    Delegate.prototype.showLoginDirect = function() {
+    showLoginDirect = function() {
       return new App.LoginDirectController("section#login-direct");
     };
 
-    Delegate.prototype.showLoginList = function() {
+    showLoginList = function() {
       new App.LoginListController("section#login-list");
       return new App.SignupController("section.signup");
     };

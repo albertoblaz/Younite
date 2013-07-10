@@ -12,8 +12,10 @@ class App.User extends Monocle.Model
 
 
     validate: ->
-    	unless @id
-    	   "id is required"
+    	"id is required" unless @id
+
+        # TODO Calcular age a partir de la fecha actual y de birthdate
+
     	# TODO que la API devuelva esto tambien
         # unless @username
         #     "name is required"

@@ -48,18 +48,10 @@ class App.UserController extends Monocle.Controller
 
 
     render: (user) ->
-        user = user.attributes()
+        for prop in [ "displayName", "music", "ambient", "age", "maxprice", "bio" ]
+            @[prop].text user[prop]
 
-        # TODO Refactorizar con un bucles, salvo picture
-        @displayName.text user.displayName
-        # @picture[0].src = user.picture
-
-        @music.text user.music
-        @ambient.text user.ambient
-        @age.text user.birthday
-        @maxprice.text user.maxprice
-
-        @bio.text user.bio
+        @picture[0].src = user.picture
 
 
     download: (id) ->

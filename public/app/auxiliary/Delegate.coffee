@@ -27,24 +27,15 @@ class Delegate
 
             # No local data
             if not users or users.length is 0
-                @showLoginForm()
+                do showLoginForm
 
             # With local data, one user
             else if users.length is 1
-                @showLoginDirect()
+                do showLoginDirect
 
             # With local data, multiple users
             else if users.length > 1
-                @showLoginList()
-
-
-    reboot: ->
-        users = App.Storage.users
-
-        if users.length > 1
-            @showLoginList()
-        else
-            @showLoginForm()
+                do showLoginList
 
 
     boot: ->
@@ -62,21 +53,27 @@ class Delegate
         new App.PartyController "section#party"
         new App.SiteController "section#site"
         # new App.SiteCommentsController "section#site"
+        @
+
+
+    reboot: ->
+        users = App.Storage.users
+        if users.length > 1 then do showLoginList else do showLoginForm
+
 
 
     # Different UIs for making login
 
-    showLoginForm: ->
+    showLoginForm = ->
         new App.LoginFormController "section#login-form"
         new App.SignupController "section.signup"
-        # new App.SignupController "section#signup5"
 
 
-    showLoginDirect: ->
+    showLoginDirect = ->
         new App.LoginDirectController "section#login-direct"
 
 
-    showLoginList: ->
+    showLoginList = ->
         new App.LoginListController "section#login-list"
         new App.SignupController "section.signup"
 
