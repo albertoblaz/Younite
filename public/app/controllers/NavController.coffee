@@ -5,4 +5,5 @@ class App.NavController extends Monocle.Controller
 
 
 	onProfile: (event) ->
-        Monocle.Route.navigate "/users/#{App.Me.id}"
+        # Monocle.Route.navigate "/users/#{App.Me.id}"
+        Lungo.Router.section "profile"

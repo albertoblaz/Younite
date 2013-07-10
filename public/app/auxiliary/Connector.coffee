@@ -13,10 +13,18 @@ class Connector
     downloadMe: =>
         p = $.get @URIS.me
         p.done (me) =>
+            # Download me
             console.log me
             user = App.User.create me
             App.Me = user
-            do App.Delegate.boot
+
+            # Download full info about each friend
+            for fid in App.Me.friends
+                q = $.get "/users/#{fid}"
+                q.done (data) =>
+                    console.log data
+                    App.User.create data
+                    do App.Delegate.boot
 
         p.fail App.Utils.fail
 

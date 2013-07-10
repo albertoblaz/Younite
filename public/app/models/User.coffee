@@ -16,9 +16,13 @@ class App.User extends Monocle.Model
 
         # TODO Calcular age a partir de la fecha actual y de birthdate
 
-    	# TODO que la API devuelva esto tambien
+        # TODO que la API devuelva esto tambien
         # unless @username
         #     "name is required"
+
+
+    me: ->
+        @id is App.Me.id
 
 
     delete: ->

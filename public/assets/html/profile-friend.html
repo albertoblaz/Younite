@@ -1,14 +1,16 @@
-<section id="profile" class="main" data-transition="slide">
+<section id="profile-friend" class="main" data-transition="slide">
 
     <header class="violet extended">
         <span id="displayName" class="title centered"></span>
 
         <nav>
-            <a href="#nav" data-router="aside" data-icon="menu"></a>
+            <a href="#back" data-router="section" data-icon="left">
+                <abbr id="label-back"></abbr>
+            </a>
         </nav>
 
         <nav class="right">
-            <a href="#profile-edit" data-router="section" data-icon="pencil" data-label="Edit"></a>
+            <a href="#profile-edit" data-router="section" data-icon="heart" data-label="Follow"></a>
         </nav>
     </header>
 
@@ -135,9 +137,15 @@
     </article>
 
 
-    <article id="profile-friends">
+    <article id="profile-friends" class="scroll">
 
-        <ul id="friends" class="scroll list"></ul>
+        <ul id="friends-shared" class="list">
+            <li class="anchor">Shared Friends</li>
+        </ul>
+
+        <ul id="friends-rest" class="list">
+            <li class="anchor">Rest of Friends</li>
+        </ul>
 
     </article>
 

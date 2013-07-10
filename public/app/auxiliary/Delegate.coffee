@@ -3,10 +3,12 @@
 #_require ../controllers/PartiesController.coffee
 #_require ../controllers/SitesController.coffee
 #_require ../controllers/MapController.coffee
-#_require ../controllers/UserController.coffee
 #_require ../controllers/FriendsController.coffee
 #_require ../controllers/SettingsController.coffee
 #_require ../controllers/HelpController.coffee
+
+#_require ../controllers/UserProfileController.coffee
+#_require ../controllers/UserFriendController.coffee
 
 #_require ../controllers/PartyController.coffee
 #_require ../controllers/SiteController.coffee
@@ -45,10 +47,12 @@ class Delegate
         new App.PartiesController "section#parties"
         new App.SitesController "section#sites"
         new App.MapController "section#map"
-        new App.UserController "section#profile"
         new App.FriendsController "section#friends"
         new App.SettingsController "section#settings"
         new App.HelpController "section#help"
+
+        new App.UserProfileController "section#profile"
+        new App.UserFriendController "section#profile-friend"
 
         new App.PartyController "section#party"
         new App.SiteController "section#site"
