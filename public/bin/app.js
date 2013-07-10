@@ -143,11 +143,7 @@
       }
     };
 
-    User.prototype["delete"] = function() {
-      App.Storage["delete"]();
-      App.Connector["delete"]();
-      return App.Delegate.reboot();
-    };
+    User.prototype["delete"] = function() {};
 
     return User;
 
@@ -169,18 +165,21 @@
       var p,
         _this = this;
       p = $.get(this.URIS.me);
-      return p.done(function(me) {
+      p.done(function(me) {
         var user;
         console.log(me);
         user = App.User.create(me);
-        return App.Me = user;
+        App.Me = user;
+        return App.Delegate.boot();
       });
+      return p.fail(App.Utils.fail);
     };
 
     Connector.prototype.login = function(user) {
       var p;
       p = this.auth(this.URIS.login, user);
-      return p.done(this.downloadMe);
+      p.done(this.downloadMe);
+      return p.fail(App.Utils.fail);
     };
 
     Connector.prototype.logout = function(user) {
@@ -275,7 +274,7 @@
   App.SiteView = (function(_super) {
     __extends(SiteView, _super);
 
-    SiteView.prototype.template_url = "app/templates/SiteView.mustache";
+    SiteView.prototype.template_url = "app/templates/SiteTemplate.mustache";
 
     SiteView.prototype.events = {
       "tap .button": "onLove",
@@ -460,6 +459,35 @@
 
   })(Monocle.Controller);
 
+  App.UserView = (function(_super) {
+    __extends(UserView, _super);
+
+    UserView.prototype.template_url = "app/templates/UserTemplate.mustache";
+
+    UserView.prototype.events = {
+      "tap .button": "onFollow",
+      "tap li": "onTap"
+    };
+
+    function UserView() {
+      UserView.__super__.constructor.apply(this, arguments);
+    }
+
+    UserView.prototype.onTap = function(event) {
+      return Monocle.Route.navigate("/users/" + this.model.id);
+    };
+
+    UserView.prototype.onFollow = function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.model.follow();
+      return this.refresh();
+    };
+
+    return UserView;
+
+  })(Monocle.View);
+
   App.UserController = (function(_super) {
     __extends(UserController, _super);
 
@@ -471,7 +499,8 @@
       "#age": "age",
       "#maxprice": "maxprice",
       "#bio": "bio",
-      "#timeline": "timeline"
+      "#timeline": "timeline",
+      "#friends": "friends"
     };
 
     UserController.prototype.events = {
@@ -481,7 +510,18 @@
     UserController.prototype.currentUser = null;
 
     function UserController() {
+      var fid, q, _i, _len, _ref7,
+        _this = this;
       UserController.__super__.constructor.apply(this, arguments);
+      _ref7 = App.Me.friends;
+      for (_i = 0, _len = _ref7.length; _i < _len; _i++) {
+        fid = _ref7[_i];
+        q = $.get("/users/" + fid);
+        q.done(function(data) {
+          console.log(data);
+          return App.User.create(data);
+        });
+      }
       this.routes({
         "/users/:id": this.loadProfile
       });
@@ -504,13 +544,47 @@
     };
 
     UserController.prototype.render = function(user) {
-      var prop, _i, _len, _ref7;
+      this.renderInfo(user);
+      this.renderActivty(user);
+      this.renderSites(user);
+      return this.renderFriends(user);
+    };
+
+    UserController.prototype.renderInfo = function(user) {
+      var prop, _i, _len, _ref7, _results;
+      this.picture[0].src = user.picture;
       _ref7 = ["displayName", "music", "ambient", "age", "maxprice", "bio"];
+      _results = [];
       for (_i = 0, _len = _ref7.length; _i < _len; _i++) {
         prop = _ref7[_i];
-        this[prop].text(user[prop]);
+        _results.push(this[prop].text(user[prop]));
       }
-      return this.picture[0].src = user.picture;
+      return _results;
+    };
+
+    UserController.prototype.renderActivty = function(user) {};
+
+    UserController.prototype.renderSites = function(user) {};
+
+    UserController.prototype.renderFriends = function(user) {
+      var fid, friend, method, view, _i, _len, _ref7, _results;
+      this.friends.children(".friend").remove();
+      if (user.friends) {
+        method = user.id === App.Me.id ? "hide" : "show";
+        this.friends.children(".anchor")[method]();
+        _ref7 = user.friends;
+        _results = [];
+        for (_i = 0, _len = _ref7.length; _i < _len; _i++) {
+          fid = _ref7[_i];
+          friend = App.User.findBy("id", fid);
+          view = new App.UserView({
+            model: friend
+          });
+          view.container = this.friends;
+          _results.push(view.append(friend));
+        }
+        return _results;
+      }
     };
 
     UserController.prototype.download = function(id) {
@@ -597,7 +671,7 @@
   App.CommentView = (function(_super) {
     __extends(CommentView, _super);
 
-    CommentView.prototype.template_url = "app/templates/CommentView.mustache";
+    CommentView.prototype.template_url = "app/templates/CommentTemplate.mustache";
 
     CommentView.prototype.events = {
       "tap li": "onTap"
@@ -671,10 +745,14 @@
     };
 
     SiteController.prototype.render = function(site) {
-      this.name.text(site.name);
-      this.picture[0].src = site.picture;
+      this.renderInfo(site);
       this.renderComments(site);
       return this.renderLove(site);
+    };
+
+    SiteController.prototype.renderInfo = function(site) {
+      this.name.text(site.name);
+      return this.picture[0].src = site.picture;
     };
 
     SiteController.prototype.renderComments = function(site) {
@@ -732,11 +810,9 @@
         user = App.Storage.users[0];
         p = App.Connector.login(user);
         p.done(function() {
-          App.Delegate.boot();
           return Lungo.Router.section('#activity');
         });
-        p.fail(function(xhr) {
-          App.Utils.fail(xhr);
+        p.fail(function() {
           return App.Delegate.reboot();
         });
       }
@@ -775,11 +851,9 @@
       };
       if (App.Utils.online()) {
         p = App.Connector.login(user);
-        p.done(function() {
-          App.Delegate.boot();
+        return p.done(function() {
           return Lungo.Router.section("activity");
         });
-        return p.fail(App.Utils.fail);
       } else {
         return App.Utils.showError(App.Messages.InternetRequired);
       }
@@ -809,10 +883,7 @@
       console.log(this.index());
       if (App.Utils.online()) {
         p = App.Connector.login(data);
-        p.done(function() {
-          return App.Delegate.boot();
-        });
-        return p.fail(App.Utils.fail);
+        return p.done(function() {});
       } else {
         return this.onSuccess();
       }

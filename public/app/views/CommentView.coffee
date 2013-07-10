@@ -2,7 +2,7 @@
 
 class App.CommentView extends Monocle.View
 
-    template_url: "app/templates/CommentView.mustache"
+    template_url: "app/templates/CommentTemplate.mustache"
 
 
     events:

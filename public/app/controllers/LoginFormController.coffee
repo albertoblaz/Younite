@@ -26,10 +26,7 @@ class App.LoginFormController extends Monocle.Controller
         if App.Utils.online()
             p = App.Connector.login user
             p.done =>
-                App.Delegate.boot()
                 Lungo.Router.section "activity"
-
-            p.fail App.Utils.fail
 
         else
             App.Utils.showError App.Messages.InternetRequired

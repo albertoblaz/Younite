@@ -2,7 +2,7 @@
 
 class App.SiteView extends Monocle.View
 
-    template_url: "app/templates/SiteView.mustache"
+    template_url: "app/templates/SiteTemplate.mustache"
 
 
     events:

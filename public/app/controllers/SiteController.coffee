@@ -68,11 +68,14 @@ class App.SiteController extends Monocle.Controller
 
 
     render: (site) ->
-        @name.text site.name
-        @picture[0].src = site.picture
-
+        @renderInfo site
         @renderComments site
         @renderLove site
+
+
+    renderInfo: (site) ->
+        @name.text site.name
+        @picture[0].src = site.picture
 
 
     renderComments: (site) ->

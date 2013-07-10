@@ -22,6 +22,6 @@ class App.User extends Monocle.Model
 
 
     delete: ->
-        App.Storage.delete()
-        App.Connector.delete()
-        App.Delegate.reboot()
+        # App.Storage.delete()
+        # App.Connector.delete()
+        # App.Delegate.reboot()

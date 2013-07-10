@@ -16,12 +16,15 @@ class Connector
             console.log me
             user = App.User.create me
             App.Me = user
-        # p.fail App.Utils.fail
+            do App.Delegate.boot
+
+        p.fail App.Utils.fail
 
 
     login: (user) ->
         p = @auth @URIS.login, user
         p.done @downloadMe
+        p.fail App.Utils.fail
 
 
     logout: (user) ->
