@@ -30,7 +30,6 @@ class App.SiteController extends Monocle.Controller
 
     constructor: ->
         super
-        App.Site.bind "comment", @bindComment
 
         # Routing
         @routes
@@ -51,11 +50,22 @@ class App.SiteController extends Monocle.Controller
 
 
     onRecommend: (event) ->
+        Lungo.Notification.confirm
+            icon: "thumbs-up"
 
+            title: "Recommend"
 
+            description: "Do you want to recommend #{@currentSite.name} to your friends?"
 
-    bindComment: (site) ->
+            accept:
+                icon: "check"
+                label: "Recommend #{@currentSite.name}"
+                callback: =>
+                    do @currentSite.recommend
 
+            cancel:
+                icon: "multiply"
+                label: "Cancel"
 
 
     loadProfile: (params) ->

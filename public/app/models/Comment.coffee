@@ -5,5 +5,6 @@ class App.Comment extends Monocle.Model
 
     validate: ->
         "id is required"        unless @id
-        "comment is required"   unless @comment
         "commenter is required" unless @commenter
+        "comment is required"   unless @comment
+        "too much characters"   unless @comment.length <= 140

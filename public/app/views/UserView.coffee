@@ -16,7 +16,7 @@ class App.UserView extends Monocle.View
 
 
     onTap: (event) ->
-        Monocle.Route.navigate "/users/#{@model.id}"
+        Monocle.Route.navigate "/users/#{@model}"
 
 
     onFollow: (event) ->

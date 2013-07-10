@@ -27,3 +27,9 @@ class App.Site extends Monocle.Model
         @comments.push com
         @updateAttributes comments: @comments
         @
+
+
+    recommend: ->
+        @recommended.push fid for fid in App.Me.friends
+        @updateAttributes recommended: @recommended
+        @

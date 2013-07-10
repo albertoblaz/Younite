@@ -33,6 +33,7 @@ class App.SitesController extends Monocle.Controller
             for s in sites
                 # TODO Temporal hasta que la API añada los comments
                 s.comments = []
+                s.recommended = []
                 site = App.Site.create s
 
             # TESTING
