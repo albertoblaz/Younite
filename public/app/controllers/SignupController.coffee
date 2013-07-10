@@ -1,3 +1,6 @@
+#_require ../auxiliary/Utils.coffee
+#_require ../auxiliary/Connector.coffee
+
 class App.SignupController extends Monocle.Controller
 
     elements:

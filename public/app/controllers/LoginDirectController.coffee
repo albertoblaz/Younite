@@ -1,3 +1,5 @@
+#_require ../auxiliary/Utils.coffee
+
 class App.LoginDirectController extends Monocle.Controller
 
     constructor: ->
@@ -9,6 +11,11 @@ class App.LoginDirectController extends Monocle.Controller
             p.done =>
                 App.Delegate.boot()
                 Lungo.Router.section '#activity'
+            # p.done =>
+            #     q = App.Connector.downloadMe()
+            #     q.then =>
+            #         App.Delegate.boot()
+            #         Lungo.Router.section '#activity'
             p.fail (xhr) =>
                 # App.Utils.showError App.Messages.AuthenticationFailed
                 App.Utils.fail xhr

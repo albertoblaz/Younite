@@ -26,5 +26,5 @@ class App.HelpController extends Monocle.Controller
             "You will receive a response in the activity view",     # Description
             "check",                                                # Icon
             3,                                                      # Time on screen
-            () -> {  }                                              # Callback function
+            # () -> {  }                                              # Callback function
         ) if res

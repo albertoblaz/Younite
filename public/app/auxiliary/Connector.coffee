@@ -1,13 +1,27 @@
+#_require ../auxiliary/Utils.coffee
+#_require ../models/User.coffee
+
 class Connector
 
     URIS:
-        login : "/users/login"
-        logout: "/users/logout"
-        signup: "/users"
+        me     : "/users/me"
+        login  : "/users/login"
+        logout : "/users/logout"
+        signup : "/users"
+
+
+    downloadMe: =>
+        p = $.get @URIS.me
+        p.done (me) =>
+            console.log me
+            user = App.User.create me
+            App.Me = user
+        # p.fail App.Utils.fail
 
 
     login: (user) ->
-        @auth @URIS.login, user
+        p = @auth @URIS.login, user
+        p.done @downloadMe
 
 
     logout: (user) ->
@@ -26,5 +40,6 @@ class Connector
             "contentType": "application/json"
 
         p = $.post uri, JSON.stringify data
+
 
 App.Connector = new Connector

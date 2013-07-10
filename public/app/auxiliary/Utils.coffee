@@ -1,3 +1,6 @@
+#_require ../auxiliary/Messages.coffee
+#_require ../auxiliary/Native.coffee
+
 App.Utils = {}
 
 App.Utils.showSuccess = (message, callback) ->

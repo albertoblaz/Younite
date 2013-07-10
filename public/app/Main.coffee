@@ -1,3 +1,5 @@
+#_require auxiliary/Delegate.coffee
+
 signupRight = ->
     App.Storage.signup
         username: "albertoblaz@gmail.com"
@@ -8,6 +10,6 @@ signupWrong = ->
         username: "albertobqlaz@gmail.com"
         password: "albertoblaz123"
 
-window.localStorage.clear()
-signupRight()
-# signupWrong()
+do window.localStorage.clear
+do signupRight
+# do signupWrong

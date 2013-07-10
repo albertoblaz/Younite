@@ -5,5 +5,4 @@ class App.NavController extends Monocle.Controller
 
 
 	onProfile: (event) ->
-		console.log "onProfile"
-		# App.CurrentUser.updateAttributes App.Me.attributes()
+        Monocle.Route.navigate "/users/#{App.Me.id}"

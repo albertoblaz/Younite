@@ -1,83 +1,66 @@
+#_require ../auxiliary/Connector.coffee
+#_require ../models/User.coffee
+
 class App.UserController extends Monocle.Controller
 
-	elements:
-		# Article 1
-		"#displayName" : "displayName"
-		"#picture"     : "picture"
+    elements:
+        # Article 1
+        "#displayName" : "displayName"
+        "#picture"     : "picture"
 
-		"#music"       : "music"
-		"#ambient"     : "ambient"
-		"#age"         : "age"
-		"#maxprice"    : "maxprice"
+        "#music"       : "music"
+        "#ambient"     : "ambient"
+        "#age"         : "age"
+        "#maxprice"    : "maxprice"
 
-		"#bio"         : "bio"
+        "#bio"         : "bio"
 
-		# Article 2
-		"#timeline"    : "timeline"
-
-	events:
-		"load #profile" : "onLoad"
-		"tap .taste"    : "onTapTaste"
+        # Article 2
+        "#timeline"    : "timeline"
 
 
-	constructor: ->
-		super
-		@downloadMe()
+    events:
+        "tap .taste"    : "onTapTaste"
 
 
-	download: (id) ->
+    currentUser: null
 
 
-	downloadMe: ->
-		# App.User.bind "create", @bindUserCreate
-		p = $.get "/users/me"
+    constructor: ->
+        super
 
-		p.done (data) =>
-			console.log data
-			user = new App.User data
-			user.save()
-			# TODO Get Timeline
-			@render user.attributes()
-			# TODO pasarle a render todos los datos, tanto user como sus eventos de timeline
-			App.Me = user
-
-		p.fail App.Utils.fail
-
-		# p.fail (xhr) =>
-		# 	# console.log err
-		# 	# TODO
-		# 	throw "Not user"
+        @routes
+           "/users/:id" : @loadProfile
+        Monocle.Route.listen()
 
 
-	# bindUserCreate: (user) =>
+    onTapTaste: (event) ->
+        console.log event
 
 
+    loadProfile: (params) ->
+        user = App.User.findBy "id", params.id
+        user = @download params.id if not user
 
-	onLoad: (event) ->
-		console.log "onLoad!!", event
-		# TODO Renderizar el usuario seleccionado
-		# para ello hace falta saber como se accedio a la ventana
-		# Si fue haciendo 'tap' en profile, es el usuario 'me'
-		# Si no, es el usuario pulsado, y por eso hay que buscarle
-
-		# if event.srcElement.search "#profile" is not -1
-		# 	@render App.Me
-		# else
-		# 	@render App.CurrentUser
+        @render user
+        @currentUser = user
+        Lungo.Router.section "#profile"
 
 
-	onTapTaste: (event) ->
-		console.log event
+    render: (user) ->
+        user = user.attributes()
+
+        # TODO Refactorizar con un bucles, salvo picture
+        @displayName.text user.displayName
+        # @picture[0].src = user.picture
+
+        @music.text user.music
+        @ambient.text user.ambient
+        @age.text user.birthday
+        @maxprice.text user.maxprice
+
+        @bio.text user.bio
 
 
-	render: (user) ->
-		# TODO Refactorizar con un bucles, salvo picture
-		@displayName.text user.displayName
-		# @picture[0].src = user.picture
-
-		@music.text user.music
-		@ambient.text user.ambient
-		@age.text user.birthday
-		@maxprice.text user.maxprice
-
-		@bio.text user.bio
+    download: (id) ->
+        console.log "download #{id}"

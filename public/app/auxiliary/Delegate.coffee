@@ -1,3 +1,24 @@
+#_require ../controllers/NavController.coffee
+#_require ../controllers/ActivityController.coffee
+#_require ../controllers/PartiesController.coffee
+#_require ../controllers/SitesController.coffee
+#_require ../controllers/MapController.coffee
+#_require ../controllers/UserController.coffee
+#_require ../controllers/FriendsController.coffee
+#_require ../controllers/SettingsController.coffee
+#_require ../controllers/HelpController.coffee
+
+#_require ../controllers/PartyController.coffee
+#_require ../controllers/SiteController.coffee
+
+#_require ../controllers/LoginDirectController.coffee
+#_require ../controllers/LoginFormController.coffee
+#_require ../controllers/LoginListController.coffee
+#_require ../controllers/SignupController.coffee
+
+#_require ../auxiliary/Storage.coffee
+
+
 class Delegate
 
     constructor: ->
@@ -40,6 +61,7 @@ class Delegate
 
         new App.PartyController "section#party"
         new App.SiteController "section#site"
+        # new App.SiteCommentsController "section#site"
 
 
     # Different UIs for making login

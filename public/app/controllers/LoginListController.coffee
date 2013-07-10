@@ -1,3 +1,6 @@
+#_require ../auxiliary/Utils.coffee
+#_require ../auxiliary/Connector.coffee
+
 class App.LoginListController extends Monocle.Controller
 
     events:

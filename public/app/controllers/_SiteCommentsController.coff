@@ -1,0 +1,50 @@
+class App.SiteCommentsController extends Monocle.Controller
+
+    elements:
+        "#comments" : "comments"
+
+
+    events:
+        "load #site"         : "onLoad"
+        "tap #btn-comment"   : "onComment"
+        "tap #btn-recommend" : "onRecommend"
+
+
+    constructor: ->
+        super
+
+
+    onLoad: (event) ->
+        # Routing
+        @routes
+           "/sites/:id" : @loadComments
+        do Monocle.Route.listen
+
+
+    onComment: (event) ->
+
+
+    onRecommend: (event) ->
+
+
+
+    loadComments: (params) =>
+        console.log "loadComments"
+        site = App.Site.findBy "id", params.id
+        site = @download params.id if not site
+
+        @render site
+        @currentSite = site
+        Lungo.Router.section "#site"
+
+
+    render: (site) ->
+        children = @el.children()
+        for child in children
+            do child.remove if child is not children.first()
+
+        comments = site.attributes().comments
+        for c in comments
+            view = new CommentView model: c
+            view.container = @el
+            view.append c

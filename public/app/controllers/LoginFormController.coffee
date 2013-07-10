@@ -1,3 +1,6 @@
+#_require ../auxiliary/Utils.coffee
+#_require ../auxiliary/Connector.coffee
+
 class App.LoginFormController extends Monocle.Controller
 
     elements:
@@ -11,8 +14,6 @@ class App.LoginFormController extends Monocle.Controller
     constructor: ->
         super
         Lungo.Router.section "login-form"
-        v = "username"
-        console.log @[v]
 
 
     onLogin: (event) ->
