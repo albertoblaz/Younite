@@ -30,16 +30,10 @@ dpd.users.get(user, function(result, err) {
         });
     } else {
         dpd.users.put(me.id, {petitionsTo: {$push: user}}, function(result, err) {
-        cancelIf(err);
-            dpd.notifications.post(notificationMe, function(res, err){
-                cancelIf(err);
-            });
+            cancelIf(err);
         });
         dpd.users.put(user, {petitionsFrom: {$push: me.id}}, function(result, err) {
-        cancelIf(err);
-            dpd.notifications.post(notificationMe, function(res, err){
-                cancelIf(err);
-            });
+            cancelIf(err);
         });
     }
 });
