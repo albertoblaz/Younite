@@ -75,36 +75,39 @@
 
     <!-- Lungo - Sandbox App -->
     <script type="text/javascript">
-        window.App = window.App || {};
+        window.App = window.App || {
+            name    : "Younite",
+            version : "0.5"
+        };
 
         Lungo.init({
-            name      : 'Younite',
-            version   : '0.4.2',
+            name      : App.name,
+            version   : App.version,
             resources : [
-                            'assets/html/init/login-form.html',
-                            'assets/html/init/login-list.html',
-                            'assets/html/init/signup1.html',
-                            'assets/html/init/signup2.html',
-                            'assets/html/init/signup3.html',
-                            'assets/html/init/signup4.html',
-                            'assets/html/init/signup5.html',
+                'assets/html/init/login-form.html',
+                'assets/html/init/login-list.html',
+                'assets/html/init/signup1.html',
+                'assets/html/init/signup2.html',
+                'assets/html/init/signup3.html',
+                'assets/html/init/signup4.html',
+                'assets/html/init/signup5.html',
 
-                            'assets/html/nav.html',
-                            'assets/html/search.html',
-                            'assets/html/parties.html',
-                            'assets/html/party.html',
-                            'assets/html/sites.html',
-                            'assets/html/site.html',
-                            'assets/html/comment.html',
-                            'assets/html/map.html',
-                            'assets/html/friends.html',
-                            'assets/html/profile.html',
-                            'assets/html/profile-friend.html',
-                            'assets/html/settings.html',
-                            'assets/html/help.html',
-                            'assets/html/about.html',
-                            'assets/html/activity.html'
-                        ]
+                'assets/html/nav.html',
+                'assets/html/search.html',
+                'assets/html/parties.html',
+                'assets/html/party.html',
+                'assets/html/sites.html',
+                'assets/html/site.html',
+                'assets/html/comment.html',
+                'assets/html/map.html',
+                'assets/html/friends.html',
+                'assets/html/profile.html',
+                'assets/html/profile-friend.html',
+                'assets/html/settings.html',
+                'assets/html/help.html',
+                'assets/html/about.html',
+                'assets/html/activity.html'
+            ]
         });
     </script>
 
