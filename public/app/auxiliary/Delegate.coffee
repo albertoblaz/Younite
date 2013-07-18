@@ -23,6 +23,10 @@
 
 class Delegate
 
+    booted: false
+    bootVersion: 0
+
+
     constructor: ->
         Lungo.ready =>
             users = App.Storage.users
@@ -41,6 +45,9 @@ class Delegate
 
 
     boot: ->
+        @booted = true
+        @bootVersion++
+
         new App.NavController "aside#nav"
 
         new App.ActivityController "section#activity"

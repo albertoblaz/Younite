@@ -1,10 +1,8 @@
 class App.User extends Monocle.Model
 
-    @fields "id",
-            "username", "password", # TODO que la API devuelva estos
-            "displayName", "picture", "gender", "city", "public",
-            "likes", "birthday", "sites", "friends", "events", "bio", "role", "timeline", "activity"
-            "music", "ambient", "maxprice", "age" # TODO que la API devuelva estos
+    @fields "id", "username", "password", "timeline", "public", "role",
+            "displayName", "picture", "bio", "birthdate", "age", "music", "ambient", "maxprice", "gender", "city",
+            "events", "activity", "sites", "recommendedSites", "friends", "petitionsFrom", "petitionsTo"
 
 
     # constructor: (data) ->
@@ -23,6 +21,18 @@ class App.User extends Monocle.Model
 
     me: ->
         @id is App.Me.id
+
+
+    saveRecommendation: (site) ->
+        @recommendedSites.push site
+        @updateAttributes recommendedSites: @recommendedSites
+        @
+
+
+    recommendToFriends: (site) ->
+        for f in @friends
+            f.saveRecommendation site
+        @
 
 
     delete: ->

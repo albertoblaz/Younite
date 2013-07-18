@@ -67,8 +67,8 @@ class App.UserProfileController extends Monocle.Controller
 
     renderFriends: (user) ->
         if user.friends
-            for fid in user.friends
-                friend = App.User.findBy "id", fid
+            for friend in user.friends
+                # friend = App.User.findBy "id", fid
                 console.log friend
                 view = new App.UserView model: friend
                 view.container = @friends

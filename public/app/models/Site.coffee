@@ -30,6 +30,7 @@ class App.Site extends Monocle.Model
 
 
     recommend: ->
-        @recommended.push fid for fid in App.Me.friends
-        @updateAttributes recommended: @recommended
-        @
+        # @recommended.push fid for fid in App.Me.friends
+        # @updateAttributes recommended: @recommended
+        # @
+        App.Me.recommendToFriends @

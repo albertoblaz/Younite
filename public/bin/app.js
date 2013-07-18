@@ -135,7 +135,7 @@
       return _ref3;
     }
 
-    User.fields("id", "username", "password", "displayName", "picture", "gender", "city", "public", "likes", "birthday", "sites", "friends", "events", "bio", "role", "timeline", "activity", "music", "ambient", "maxprice", "age");
+    User.fields("id", "username", "password", "timeline", "public", "role", "displayName", "picture", "bio", "birthdate", "age", "music", "ambient", "maxprice", "gender", "city", "events", "activity", "sites", "recommendedSites", "friends", "petitionsFrom", "petitionsTo");
 
     User.prototype.validate = function() {
       if (!this.id) {
@@ -147,6 +147,24 @@
       return this.id === App.Me.id;
     };
 
+    User.prototype.saveRecommendation = function(site) {
+      this.recommendedSites.push(site);
+      this.updateAttributes({
+        recommendedSites: this.recommendedSites
+      });
+      return this;
+    };
+
+    User.prototype.recommendToFriends = function(site) {
+      var f, _i, _len, _ref4;
+      _ref4 = this.friends;
+      for (_i = 0, _len = _ref4.length; _i < _len; _i++) {
+        f = _ref4[_i];
+        f.saveRecommendation(site);
+      }
+      return this;
+    };
+
     User.prototype["delete"] = function() {};
 
     return User;
@@ -155,6 +173,7 @@
 
   Connector = (function() {
     function Connector() {
+      this.downloadFriends = __bind(this.downloadFriends, this);
       this.downloadMe = __bind(this.downloadMe, this);
     }
 
@@ -163,31 +182,6 @@
       login: "/users/login",
       logout: "/users/logout",
       signup: "/users"
-    };
-
-    Connector.prototype.downloadMe = function() {
-      var p,
-        _this = this;
-      p = $.get(this.URIS.me);
-      p.done(function(me) {
-        var fid, q, user, _i, _len, _ref4, _results;
-        console.log(me);
-        user = App.User.create(me);
-        App.Me = user;
-        _ref4 = App.Me.friends;
-        _results = [];
-        for (_i = 0, _len = _ref4.length; _i < _len; _i++) {
-          fid = _ref4[_i];
-          q = $.get("/users/" + fid);
-          _results.push(q.done(function(data) {
-            console.log(data);
-            App.User.create(data);
-            return App.Delegate.boot();
-          }));
-        }
-        return _results;
-      });
-      return p.fail(App.Utils.fail);
     };
 
     Connector.prototype.login = function(user) {
@@ -212,6 +206,44 @@
         "contentType": "application/json"
       });
       return p = $.post(uri, JSON.stringify(data));
+    };
+
+    Connector.prototype.downloadMe = function() {
+      var p,
+        _this = this;
+      p = $.get(this.URIS.me);
+      p.done(function(me) {
+        console.log(me);
+        App.Me = App.User.create(me);
+        return _this.downloadFriends();
+      });
+      return p.fail(App.Utils.fail);
+    };
+
+    Connector.prototype.downloadFriends = function() {
+      var arr, fid, iter, nmax, q, _i, _len, _ref4, _results,
+        _this = this;
+      iter = 0;
+      nmax = App.Me.friends.length;
+      arr = [];
+      _ref4 = App.Me.friends;
+      _results = [];
+      for (_i = 0, _len = _ref4.length; _i < _len; _i++) {
+        fid = _ref4[_i];
+        q = $.get("/users/" + fid);
+        _results.push(q.done(function(data) {
+          console.log(data);
+          arr.push(App.User.create(data));
+          iter++;
+          if (iter === nmax) {
+            App.Me.updateAttributes({
+              friends: arr
+            });
+            return App.Delegate.boot();
+          }
+        }));
+      }
+      return _results;
     };
 
     return Connector;
@@ -286,16 +318,7 @@
     };
 
     Site.prototype.recommend = function() {
-      var fid, _i, _len, _ref6;
-      _ref6 = App.Me.friends;
-      for (_i = 0, _len = _ref6.length; _i < _len; _i++) {
-        fid = _ref6[_i];
-        this.recommended.push(fid);
-      }
-      this.updateAttributes({
-        recommended: this.recommended
-      });
-      return this;
+      return App.Me.recommendToFriends(this);
     };
 
     return Site;
@@ -506,7 +529,7 @@
     }
 
     UserView.prototype.onTap = function(event) {
-      return Monocle.Route.navigate("/users/" + this.model);
+      return Monocle.Route.navigate("/users/" + this.model.id);
     };
 
     UserView.prototype.onFollow = function(event) {
@@ -541,12 +564,11 @@
     };
 
     FriendsController.prototype.render = function(user) {
-      var fid, friend, view, _i, _len, _ref7;
+      var friend, view, _i, _len, _ref7;
       if (user.friends) {
         _ref7 = user.friends;
         for (_i = 0, _len = _ref7.length; _i < _len; _i++) {
-          fid = _ref7[_i];
-          friend = App.User.findBy("id", fid);
+          friend = _ref7[_i];
           view = new App.UserView({
             model: friend
           });
@@ -670,12 +692,11 @@
     };
 
     UserProfileController.prototype.renderFriends = function(user) {
-      var fid, friend, view, _i, _len, _ref9;
+      var friend, view, _i, _len, _ref9;
       if (user.friends) {
         _ref9 = user.friends;
         for (_i = 0, _len = _ref9.length; _i < _len; _i++) {
-          fid = _ref9[_i];
-          friend = App.User.findBy("id", fid);
+          friend = _ref9[_i];
           console.log(friend);
           view = new App.UserView({
             model: friend
@@ -767,7 +788,7 @@
     };
 
     UserFriendController.prototype.renderFriends = function(user) {
-      var fid, friend, method, view, _i, _len, _ref9;
+      var friend, method, view, _i, _len, _ref9;
       this.shared.children(".friend").remove();
       this.rest.children(".friend").remove();
       if (user.friends) {
@@ -776,8 +797,7 @@
         this.rest.children(".anchor")[method]();
         _ref9 = user.friends;
         for (_i = 0, _len = _ref9.length; _i < _len; _i++) {
-          fid = _ref9[_i];
-          friend = App.User.findBy("id", fid);
+          friend = _ref9[_i];
           view = new App.UserView({
             model: friend
           });
@@ -1176,6 +1196,10 @@
   Delegate = (function() {
     var showLoginDirect, showLoginForm, showLoginList;
 
+    Delegate.prototype.booted = false;
+
+    Delegate.prototype.bootVersion = 0;
+
     function Delegate() {
       var _this = this;
       Lungo.ready(function() {
@@ -1192,6 +1216,8 @@
     }
 
     Delegate.prototype.boot = function() {
+      this.booted = true;
+      this.bootVersion++;
       new App.NavController("aside#nav");
       new App.ActivityController("section#activity");
       new App.PartiesController("section#parties");

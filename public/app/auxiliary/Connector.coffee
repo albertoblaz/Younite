@@ -10,25 +10,6 @@ class Connector
         signup : "/users"
 
 
-    downloadMe: =>
-        p = $.get @URIS.me
-        p.done (me) =>
-            # Download me
-            console.log me
-            user = App.User.create me
-            App.Me = user
-
-            # Download full info about each friend
-            for fid in App.Me.friends
-                q = $.get "/users/#{fid}"
-                q.done (data) =>
-                    console.log data
-                    App.User.create data
-                    do App.Delegate.boot
-
-        p.fail App.Utils.fail
-
-
     login: (user) ->
         p = @auth @URIS.login, user
         p.done @downloadMe
@@ -51,6 +32,32 @@ class Connector
             "contentType": "application/json"
 
         p = $.post uri, JSON.stringify data
+
+
+    downloadMe: =>
+        p = $.get @URIS.me
+        p.done (me) =>
+            console.log me
+            App.Me = App.User.create me
+            do @downloadFriends
+
+        p.fail App.Utils.fail
+
+
+    downloadFriends: =>
+        iter = 0
+        nmax = App.Me.friends.length
+        arr  = []
+
+        for fid in App.Me.friends
+            q = $.get "/users/#{fid}"
+            q.done (data) =>
+                console.log data
+                arr.push App.User.create data
+                iter++
+                if iter is nmax
+                    App.Me.updateAttributes friends: arr
+                    do App.Delegate.boot
 
 
 App.Connector = new Connector

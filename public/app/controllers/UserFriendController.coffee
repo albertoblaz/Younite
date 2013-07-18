@@ -94,8 +94,8 @@ class App.UserFriendController extends Monocle.Controller
             do @shared.children(".anchor")[method]
             do @rest.children(".anchor")[method]
 
-            for fid in user.friends
-                friend = App.User.findBy "id", fid
+            for friend in user.friends
+                # friend = App.User.findBy "id", fid
                 view = new App.UserView model: friend
                 view.container = @shared
                 view.append friend
