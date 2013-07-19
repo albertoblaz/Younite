@@ -27,4 +27,8 @@ class App.SiteView extends Monocle.View
 
 
     removeSiteView: (model) =>
-        do @el.remove if @model.equal model
+        console.log "remove", model
+        if @model.equal model
+            do @el.remove
+            App.Site.unbind "removeSiteView", @removeSiteView
+            # SiteView = null

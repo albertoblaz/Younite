@@ -11,11 +11,11 @@ class App.SitesController extends Monocle.Controller
 
 
     events:
-        "tap #search" : "onSearch"
-        "load #sites" : "onLoad"
+        "tap #search"  : "onSearch"
+        "load #sites"  : "onLoad"
 
 
-    pendingSites: []
+    sitesChanged: []
 
 
     constructor: ->
@@ -50,19 +50,19 @@ class App.SitesController extends Monocle.Controller
 
 
     onLoad: (event) ->
-        for site in @pendingSites
+        for site in @sitesChanged
             site.trigger "removeSiteView"
             @bindCreate site
 
-        @pendingSites = []
+        @sitesChanged = []
 
 
     onSearch: (event) ->
-        console.log "Searching"
+        # console.log "Searching"
 
 
     bindCreate: (site) =>
-        console.log "You've created #{site.name}!"
+        # console.log "You've created #{site.name}!"
         view = new App.SiteView model: site
 
         if site.loved
@@ -74,8 +74,8 @@ class App.SitesController extends Monocle.Controller
 
 
     bindChange: (site) =>
-        console.log "You've changed #{site.name}!"
-        @pendingSites.push site if not @pendingSites.contains site
+        # console.log "You've changed #{site.name}!"
+        @sitesChanged.push site if not @sitesChanged.contains site
 
 
     bindSiteDelete: (site) =>

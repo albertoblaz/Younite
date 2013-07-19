@@ -991,3 +991,34 @@ form textarea,
 footer {
   background-color: whitesmoke;
 }
+#site-photos img {
+    width: 100%;
+    height: auto;
+}
+.buttonsbar {
+    -webkit-column-count: 3;
+    -webkit-column-gap: 0px;
+    height: 50px;
+    padding: 7px 10px;
+    position: relative;
+    top: 0;
+}
+
+.btn-filter {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    width: 101%;
+}
+
+.btn-filter:first-child {
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-right: 0;
+}
+
+.btn-filter:last-child {
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-left: 0;
+    margin-left: -1px;
+}
