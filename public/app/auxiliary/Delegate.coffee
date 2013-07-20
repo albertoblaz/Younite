@@ -51,8 +51,8 @@ class Delegate
         new App.NavController "aside#nav"
 
         new App.ActivityController "section#activity"
-        new App.PartiesController "section#parties"
         new App.SitesController "section#sites"
+        new App.PartiesController "section#parties"
         new App.MapController "section#map"
         new App.FriendsController "section#friends"
         new App.SettingsController "section#settings"

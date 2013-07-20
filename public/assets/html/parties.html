@@ -6,22 +6,25 @@
         </nav>
 
         <nav class="right">
-            <a href="#" data-icon="search"  data-action="search-parties"></a>
-            <a href="#" data-icon="refresh" data-action="refresh-parties"></a>
+            <a href="#" id="search" data-icon="search"></a>
         </nav>
     </header>
 
 
     <nav class="groupbar">
-        <a href="#following"   data-router="article" data-label="Following"   data-count="22" class="active"></a>
-        <a href="#recommended" data-router="article" data-label="Recommended" data-count="3"></a>
+        <a href="#following" data-router="article" data-label="Following"  class="active">
+            <span id="count-fol" class="tag theme count"></span>
+        </a>
+        <a href="#recommended" data-router="article" data-label="Recommended">
+            <span id="count-rec" class="tag theme count"></span>
+        </a>
     </nav>
 
 
     <article id="following" class="active scroll">
 
         <ul class="list">
-            <li class="anchor">Today, 23 January 2013</li>
+<!--             <li class="anchor">Today, 23 January 2013</li>
 
             <li data-image="assets/images/logos/kapital.png" class="arrow selectable mini">
                 <a href="#" class="violet button right" data-label="Attend"></a>
@@ -96,7 +99,7 @@
                     <strong>Fiesta C</strong>
                     <small>Goa - 01.00</small>
                 </a>
-            </li>
+            </li> -->
         </ul>
 
     </article>
@@ -105,7 +108,7 @@
     <article id="recommended" class="scroll">
 
         <ul class="list">
-            <li class="anchor">Saturday, 23 January 2013</li>
+            <!-- <li class="anchor">Saturday, 23 January 2013</li>
 
             <li data-image="assets/images/logos/kapital.png" class="arrow selectable mini">
                 <a href="#" class="violet button right" data-label="Attend"></a>
@@ -142,7 +145,7 @@
                     <strong>Fiesta C</strong>
                     <small>Goa - 01.00</small>
                 </a>
-            </li>
+            </li> -->
         </ul>
 
     </article>

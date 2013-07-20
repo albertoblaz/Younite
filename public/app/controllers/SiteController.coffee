@@ -60,8 +60,7 @@ class App.SiteController extends Monocle.Controller
             accept:
                 icon: "check"
                 label: "Recommend #{@currentSite.name}"
-                callback: =>
-                    do @currentSite.recommend
+                callback: => do @currentSite.recommend
 
             cancel:
                 icon: "multiply"
