@@ -1,3 +1,8 @@
+#_require ../auxiliary/Utils.coffee
+#_require ../auxiliary/Connector.coffee
+#_require ../models/Site.coffee
+#_require ../views/SiteView.coffee
+
 class App.SitesController extends Monocle.Controller
 
     elements:
@@ -6,11 +11,11 @@ class App.SitesController extends Monocle.Controller
 
 
     events:
-        "tap #search" : "onSearch"
-        "load #sites" : "onLoad"
+        "tap #search"  : "onSearch"
+        "load #sites"  : "onLoad"
 
 
-    pendingSites: []
+    sitesChanged: []
 
 
     constructor: ->
@@ -21,34 +26,43 @@ class App.SitesController extends Monocle.Controller
         App.Site.bind "error", @bindSiteError
         App.Site.bind "delete", @bindSiteDelete
 
+        # GET sites from Connector
         p = $.getJSON "/sites/"
         p.done (sites) =>
             console.log sites
             for s in sites
-                App.Site.create s
-            App.Site.bind "change", @bindChange
-                # TODO Efficiency
+                # TODO Temporal hasta que la API añada los comments
+                s.comments = []
+                s.recommended = []
+                site = App.Site.create s
+
+            # TESTING
+            site.comment
+                id: "1"
+                comment: "Comentario de prueba"
+                commenter: App.Me
+                commented: site
+            # END TESTING
+
+            App.Site.bind "change", @bindChange     # TODO Efficiency
 
         p.fail App.Utils.fail
 
 
     onLoad: (event) ->
-        uniqSites = []
-        uniqSites.push s for s in @pendingSites when not uniqSites.contains s
+        for site in @sitesChanged
+            site.trigger "removeSiteView"
+            @bindCreate site
 
-        for s in uniqSites
-            s.trigger "removeSiteView"
-            @bindCreate s
-
-        @pendingSites = []
+        @sitesChanged = []
 
 
     onSearch: (event) ->
-        console.log "Searching"
+        # console.log "Searching"
 
 
     bindCreate: (site) =>
-        console.log "You've created #{site.name}!"
+        # console.log "You've created #{site.name}!"
         view = new App.SiteView model: site
 
         if site.loved
@@ -60,8 +74,8 @@ class App.SitesController extends Monocle.Controller
 
 
     bindChange: (site) =>
-        console.log "You've changed #{site.name}!"
-        @pendingSites.push site
+        # console.log "You've changed #{site.name}!"
+        @sitesChanged.push site if not @sitesChanged.contains site
 
 
     bindSiteDelete: (site) =>

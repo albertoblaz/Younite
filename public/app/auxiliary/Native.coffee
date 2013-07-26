@@ -1,1 +1,1 @@
-Array.prototype.contains = (elem) -> this.indexOf(elem) is not -1
+Array::contains = (elem) -> this.indexOf(elem) is not -1

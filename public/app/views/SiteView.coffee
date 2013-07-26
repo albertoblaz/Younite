@@ -1,10 +1,13 @@
+#_require ../models/Site.coffee
+
 class App.SiteView extends Monocle.View
 
-    template_url: "app/templates/SiteView.mustache"
+    template_url: "app/templates/SiteTemplate.mustache"
+
 
     events:
         "tap .button" : "onLove"
-        "tap li" : "onTap"
+        "tap li"      : "onTap"
 
 
     constructor: ->
@@ -13,7 +16,6 @@ class App.SiteView extends Monocle.View
 
 
     onTap: (event) ->
-        console.log "onTap"
         Monocle.Route.navigate "/sites/#{@model.id}"
 
 
@@ -25,4 +27,8 @@ class App.SiteView extends Monocle.View
 
 
     removeSiteView: (model) =>
-        @el.remove() if @model.equal model
+        console.log "remove", model
+        if @model.equal model
+            do @el.remove
+            App.Site.unbind "removeSiteView", @removeSiteView
+            # SiteView = null

@@ -1,3 +1,6 @@
+#_require ../auxiliary/Utils.coffee
+#_require ../auxiliary/Connector.coffee
+
 class App.LoginFormController extends Monocle.Controller
 
     elements:
@@ -11,8 +14,6 @@ class App.LoginFormController extends Monocle.Controller
     constructor: ->
         super
         Lungo.Router.section "login-form"
-        v = "username"
-        console.log @[v]
 
 
     onLogin: (event) ->
@@ -25,10 +26,7 @@ class App.LoginFormController extends Monocle.Controller
         if App.Utils.online()
             p = App.Connector.login user
             p.done =>
-                App.Delegate.boot()
                 Lungo.Router.section "activity"
-
-            p.fail App.Utils.fail
 
         else
             App.Utils.showError App.Messages.InternetRequired
