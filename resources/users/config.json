@@ -49,12 +49,12 @@
 			"id": "likes",
 			"order": 5
 		},
-		"birthday": {
-			"name": "birthday",
+		"birthdate": {
+			"name": "birthdate",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
-			"id": "birthday",
+			"id": "birthdate",
 			"order": 6
 		},
 		"sites": {

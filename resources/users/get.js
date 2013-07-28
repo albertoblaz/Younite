@@ -19,6 +19,7 @@ if(!isAllowed()){
   hide('likes');
   hide('city');
   hide('friends');
+  hide('activity');
 } else{
   if(query.hasOwnProperty('getSites')){
     dpd.sites.get({id : {$in: self.sites}}, function(sites, error){
