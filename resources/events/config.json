@@ -33,13 +33,21 @@
 			"id": "date",
 			"order": 3
 		},
+		"siteName": {
+			"name": "siteName",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "siteName",
+			"order": 4
+		},
 		"users": {
 			"name": "users",
 			"type": "array",
 			"typeLabel": "array",
 			"required": false,
 			"id": "users",
-			"order": 4
+			"order": 5
 		},
 		"price": {
 			"name": "price",
@@ -47,7 +55,7 @@
 			"typeLabel": "number",
 			"required": false,
 			"id": "price",
-			"order": 5
+			"order": 6
 		}
 	}
 }

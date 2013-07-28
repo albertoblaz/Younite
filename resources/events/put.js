@@ -7,13 +7,5 @@ if(!internal){
     protect("idDisco");
     protect("date");
     protect('users');
-} else {
-    if(changed('users')){
-        this.users = removeDups(this.users);
-    }
-}
-
-function removeDups(vals){
-    var actual = _.values(vals);
-    return _.uniq(actual);
+    protect('siteName');
 }

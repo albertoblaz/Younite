@@ -1,32 +1,22 @@
 cancelUnless(me && internal, "You must be logged", 401);
 
-var async = require('async');
 var self = this;
 
 protect('timestamp');
-var timestamp = new Date();
+var timestamp = (new Date()).toString();
 self.timestamp = timestamp;
-
-var arrayFunc = [];
-
-function _pushId(id){
-    return function(cb){
-        dpd.timeline.put(id, {timeline : {$push : self.id}}, function(timeline,err){
-            console.log(err);
-            errorIf(err);
-            cb(err, res);
-        });
-    };
-}
 
 dpd.users.get(this.from, function(user, err){
     cancelIf(err);
     if(user.friends){
-        for(var i=0; i < user.friends.length; i++){
-            arrayFunc.push(_pushId(user.friends[i]));
+      dpd.users.get({id : {$in : user.friends}}, function(users, err){
+        cancelIf(err, err);
+        console.log(users);
+        for(var i=0; i < users.length; i++){
+          dpd.timeline.put(users[i].timeline, {timeline : {$push : self.id}}, function(timeline,err){
+              cancelIf(err, err);
+          });
         }
-        async.parallel(array, function(err, res){
-            cancelIf(err);
-        });
+      });
     }
 });

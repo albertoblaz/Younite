@@ -41,13 +41,29 @@
 			"id": "public",
 			"order": 4
 		},
-		"likes": {
-			"name": "likes",
+		"music": {
+			"name": "music",
 			"type": "array",
 			"typeLabel": "array",
 			"required": true,
-			"id": "likes",
+			"id": "music",
 			"order": 5
+		},
+		"ambient": {
+			"name": "ambient",
+			"type": "array",
+			"typeLabel": "array",
+			"required": true,
+			"id": "ambient",
+			"order": 6
+		},
+		"maxPrice": {
+			"name": "maxPrice",
+			"type": "number",
+			"typeLabel": "number",
+			"required": true,
+			"id": "maxPrice",
+			"order": 7
 		},
 		"birthdate": {
 			"name": "birthdate",
@@ -55,7 +71,7 @@
 			"typeLabel": "string",
 			"required": true,
 			"id": "birthdate",
-			"order": 6
+			"order": 8
 		},
 		"sites": {
 			"name": "sites",
@@ -63,7 +79,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "sites",
-			"order": 7
+			"order": 9
 		},
 		"friends": {
 			"name": "friends",
@@ -71,7 +87,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "friends",
-			"order": 8
+			"order": 10
 		},
 		"events": {
 			"name": "events",
@@ -79,7 +95,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "events",
-			"order": 9
+			"order": 11
 		},
 		"bio": {
 			"name": "bio",
@@ -87,7 +103,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "bio",
-			"order": 10
+			"order": 12
 		},
 		"role": {
 			"name": "role",
@@ -95,7 +111,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "role",
-			"order": 11
+			"order": 13
 		},
 		"timeline": {
 			"name": "timeline",
@@ -103,7 +119,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "timeline",
-			"order": 12
+			"order": 14
 		},
 		"activity": {
 			"name": "activity",
@@ -111,7 +127,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "activity",
-			"order": 13
+			"order": 15
 		},
 		"petitionsFrom": {
 			"name": "petitionsFrom",
@@ -119,7 +135,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "petitionsFrom",
-			"order": 14
+			"order": 16
 		},
 		"petitionsTo": {
 			"name": "petitionsTo",
@@ -127,7 +143,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "petitionsTo",
-			"order": 15
+			"order": 17
 		},
 		"recommendedSites": {
 			"name": "recommendedSites",
@@ -135,7 +151,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "recommendedSites",
-			"order": 16
+			"order": 18
 		}
 	}
 }

@@ -5,6 +5,7 @@ var self = this;
 
 var SITES_FIELDS = ['id', 'name', 'picture', 'music'];
 var FRIENDS_FIELDS = ['id', 'displayName', 'picture', 'birthdate', 'city'];
+var EVENTS = ['id', 'name', 'siteName', 'siteIcon', 'going', 'date'];
 
 hide('username');
 hide('role');
@@ -31,13 +32,18 @@ if(!isAllowed()){
   }
   if(query.hasOwnProperty('getFriends')){
     dpd.users.get({id : {$in: self.friends}}, function(friends, error){
-        self.friends = _.map(friends, function(friend){ return _.pick(friend, FRIENDS_FIELDS); });
+      self.friends = _.map(friends, function(friend){ return _.pick(friend, FRIENDS_FIELDS); });
     });
     dpd.users.get({id : {$in: self.petitionsFrom}}, function(froms, error){
-        self.petitionsFrom = _.map(froms, function(from){ return _.pick(from, FRIENDS_FIELDS); });
+      self.petitionsFrom = _.map(froms, function(from){ return _.pick(from, FRIENDS_FIELDS); });
     });
-    dpd.users.get({id : {$in: self.petitionsTo}}, function(froms, error){
-        self.petitionsFrom = _.map(froms, function(from){ return _.pick(from, FRIENDS_FIELDS); });
+    dpd.users.get({id : {$in: self.petitionsTo}}, function(tos, error){
+      self.petitionsTo = _.map(tos, function(to){ return _.pick(to, FRIENDS_FIELDS); });
+    });
+  }
+  if(query.hasOwnProperty('getEvents')){
+    dpd.events.get({id : {$in: self.events}}, function(events, error){
+      self.events = _.map(events, function(event){return _.pick(event, EVENTS_FIELDS);});
     });
   }
 }
