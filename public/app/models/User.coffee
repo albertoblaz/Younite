@@ -1,10 +1,8 @@
 class App.User extends Monocle.Model
 
-    @fields "id",
-            "username", "password", # TODO que la API devuelva estos
-            "displayName", "picture", "gender", "city", "public",
-            "likes", "birthday", "sites", "friends", "events", "bio", "role", "timeline", "activity"
-            "music", "ambient", "maxprice", "age" # TODO que la API devuelva estos
+    @fields "id", "username", "password", "timeline", "public", "role",
+            "displayName", "picture", "bio", "birthdate", "age", "music", "ambient", "maxprice", "gender", "city",
+            "events", "activity", "sites", "recommendedSites", "friends", "petitionsFrom", "petitionsTo"
 
 
     # constructor: (data) ->
@@ -12,14 +10,32 @@ class App.User extends Monocle.Model
 
 
     validate: ->
-    	unless @id
-    	   "id is required"
-    	# TODO que la API devuelva esto tambien
+    	"id is required" unless @id
+
+        # TODO Calcular age a partir de la fecha actual y de birthdate
+
+        # TODO que la API devuelva esto tambien
         # unless @username
         #     "name is required"
 
 
+    me: ->
+        @id is App.Me.id
+
+
+    saveRecommendation: (site) ->
+        @recommendedSites.push site
+        @updateAttributes recommendedSites: @recommendedSites
+        @
+
+
+    recommendToFriends: (site) ->
+        for f in @friends
+            f.saveRecommendation site
+        @
+
+
     delete: ->
-        App.Storage.delete()
-        App.Connector.delete()
-        App.Delegate.reboot()
+        # App.Storage.delete()
+        # App.Connector.delete()
+        # App.Delegate.reboot()

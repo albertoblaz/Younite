@@ -41,13 +41,45 @@
 			"id": "picture",
 			"order": 4
 		},
-		"style": {
-			"name": "style",
+		"icon": {
+			"name": "icon",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "icon",
+			"order": 5
+		},
+		"music": {
+			"name": "music",
 			"type": "array",
 			"typeLabel": "array",
 			"required": true,
-			"id": "style",
-			"order": 5
+			"id": "music",
+			"order": 6
+		},
+		"ambient": {
+			"name": "ambient",
+			"type": "array",
+			"typeLabel": "array",
+			"required": "true",
+			"id": "ambient",
+			"order": 7
+		},
+		"maxprice": {
+			"name": "maxprice",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "maxprice",
+			"order": 8
+		},
+		"maxpricevip": {
+			"name": "maxpricevip",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "maxpricevip",
+			"order": 9
 		},
 		"users": {
 			"name": "users",
@@ -55,7 +87,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "users",
-			"order": 6
+			"order": 10
 		},
 		"events": {
 			"name": "events",
@@ -63,7 +95,7 @@
 			"typeLabel": "array",
 			"required": false,
 			"id": "events",
-			"order": 7
+			"order": 11
 		},
 		"owner": {
 			"name": "owner",
@@ -71,7 +103,7 @@
 			"typeLabel": "string",
 			"required": false,
 			"id": "owner",
-			"order": 8
+			"order": 12
 		}
 	}
 }

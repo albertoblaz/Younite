@@ -1,3 +1,8 @@
+#_require ../auxiliary/Utils.coffee
+#_require ../auxiliary/Connector.coffee
+#_require ../models/Site.coffee
+#_require ../views/SiteView.coffee
+
 class App.SitesController extends Monocle.Controller
 
     elements:
@@ -6,36 +11,58 @@ class App.SitesController extends Monocle.Controller
 
 
     events:
-        "click a[data-action=search]": "onSearch"
-        "load #sites" : "renderViews"
+        "tap #search"  : "onSearch"
+        "load #sites"  : "onLoad"
+
+
+    sitesChanged: []
 
 
     constructor: ->
         super
-        @pendingSites=[]
 
         # Events Bounded
         App.Site.bind "create", @bindCreate
         App.Site.bind "error", @bindSiteError
         App.Site.bind "delete", @bindSiteDelete
 
+        # GET sites from Connector
         p = $.getJSON "/sites/"
         p.done (sites) =>
             console.log sites
             for s in sites
-                App.Site.create s
-                # TODO Efficiency
-            App.Site.bind "change", @renderSite
+                # TODO Temporal hasta que la API añada los comments
+                s.comments = []
+                s.recommended = []
+                site = App.Site.create s
+
+            # TESTING
+            site.comment
+                id: "1"
+                comment: "Comentario de prueba"
+                commenter: App.Me
+                commented: site
+            # END TESTING
+
+            App.Site.bind "change", @bindChange     # TODO Efficiency
 
         p.fail App.Utils.fail
 
 
+    onLoad: (event) ->
+        for site in @sitesChanged
+            site.trigger "removeSiteView"
+            @bindCreate site
+
+        @sitesChanged = []
+
+
     onSearch: (event) ->
-        console.log "Searching"
+        # console.log "Searching"
 
 
     bindCreate: (site) =>
-        console.log "You've created #{site.name}!"
+        # console.log "You've created #{site.name}!"
         view = new App.SiteView model: site
 
         if site.loved
@@ -47,71 +74,14 @@ class App.SitesController extends Monocle.Controller
 
 
     bindChange: (site) =>
-        console.log "You've changed #{site.name}!"
-        view = new App.SiteView model: site
-
-        if site.loved
-            view.container = @fav
-        else if site.recommended
-            view.container = @rec
-
-        @pendingSites.push view
-
-
-    renderViews: (event) ->
-        for v in @pendingSites
-            v.model.trigger "removeSiteView"
-            v.append v.model
-        @pendingSites = []
-
-
-    renderSite: (site) =>
-        console.log "You've rendered #{site.name}!"
-        view = new App.SiteView model: site
-
-        if site.loved
-            view.container = @fav
-            # view.append site
-        else if site.recommended
-            view.container = @rec
-            # view.append site
-
-        @pendingSites.push view
-
-
-    # bindSiteCreate: (site) =>
-    #     console.log "You've created #{site.name}!"
-    #     view = new App.SiteView model: site
-
-    #     if site.loved
-    #         view.container = @fav
-    #         view.append site
-    #     else if site.recommended
-    #         view.container = @rec
-    #         view.append site
-
-
-    # bindSiteChange: (site) =>
-    #     console.log "You've change #{site.name}!"
-    #     view = new App.SiteView model: site
-
-    #     if site.loved
-    #         view.container = @fav
-    #         view.append site
-    #     else if site.recommended
-    #         view.container = @rec
-    #         view.append site
+        # console.log "You've changed #{site.name}!"
+        @sitesChanged.push site if not @sitesChanged.contains site
 
 
     bindSiteDelete: (site) =>
-        console.log "You've deleted #{site.name}!"
+        App.Utils.showError "Deleting the site #{site.name}"
+        throw "You've deleted #{site.name}!, #{site}"
 
 
     bindSiteError: (site) =>
-        console.log "Site Error spotted, #{site}!"
-
-
-    viewSiteProfile: (params) ->
-        console.log "View the profile of the site: #{params.id}"
-        Lungo.Router.section "#site"
-
+        App.Utils.showError "Site error spotted, #{site.name}!"

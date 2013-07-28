@@ -53,9 +53,6 @@
     <link rel="stylesheet" href="components/lungo/lungo.icon.brand.css">
     <link rel="stylesheet" href="components/lungo/theme.lungo.css" id="theme-stylesheet">
 
-    <!-- App Stylesheet -->
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-
 </head>
 
 
@@ -68,327 +65,59 @@
     </section>
 
 
-    <section id="login-form" class="violet">
-        <article class="indented splash active violet">
-            <img src="assets/images/logo_splash.png">
-
-            <form class="rounded">
-                <input type="text"     placeholder="Your username" id="username" value="">
-                <input type="password" placeholder="Your password" id="password" value="">
-
-                <strong>
-                    <a href="#" class="button accept anchor" id="btn-login">Press for Login</a>
-                </strong>
-            </form>
-
-            <br>
-            <strong>
-                <p class="login-text">If you wanna be in, please</p>
-                <a href="#signup1" data-router="section" class="button accept same-line btn-signup">Join us!</a>
-            </strong>
-        </article>
-    </section>
-
-
-    <section id="login-list" class="violet" data-transition="pop">
-        <article class="indented splash active violet">
-            <img src="assets/images/logo_splash.png">
-
-            <ul class="list">
-                <li class="anchor">Select your user account</li>
-
-                <li>
-                    <a href="#" data-icon="cancel" data-label="Delete" class="button small cancel right"></a>
-                    <strong class="left">Alberto Blázquez</strong>
-                    <small class="left">Last time logged: 12 Jan, 2013</small>
-                    <div class="clear"></div>
-                </li>
-
-                <li>
-                    <a href="#" data-icon="cancel" data-label="Delete" class="button small cancel right"></a>
-                    <strong class="left">Chiquito de la calzada</strong>
-                    <small class="left">Last time logged: 12 Jan, 2013</small>
-                    <div class="clear"></div>
-                </li>
-            </ul>
-
-            <br>
-            <strong>
-                <p class="login-text">If you wanna be in, please</p>
-                <a href="#signup1" data-router="section" class="button accept same-line btn-signup">Join us!</a>
-            </strong>
-        </article>
-    </section>
-
-
-    <section id="signup1" class="signup violet" data-transition="pop">
-        <header data-title="Signup (1/5)">
-            <nav>
-                <a href="#login-form" data-router="section" data-icon="left" data-label="Login"></a>
-            </nav>
-
-            <nav class="right">
-                <a href="#signup2" data-router="section" data-icon="right" data-label="Next"></a>
-            </nav>
-        </header>
-
-
-        <article class="active">
-
-            <form class="settings-form">
-                <!-- <fieldset style="background-color: #666;">
-                    <p class="login-text" style="margin-bottom: 10px;text-align: center;color: white;">First of all, tell us something about you :)</p>
-                </fieldset> -->
-
-                <fieldset>
-                    <label>Name </label>
-                    <input type="text" id="signup-name" value="Alberto Blazquez Prueba">
-                </fieldset>
-
-                <fieldset>
-                    <label>Birthdate </label>
-                    <input type="date" id="signup-birthdate" value="2013-12-01">
-                </fieldset>
-
-                <fieldset>
-                </fieldset>
-            </form>
-
-            <form class="margined">
-                <div>
-                    <label>Gender </label>
-                    <label class="select">
-                        <select id="signup-gender">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </label>
-                </div>
-
-                <div>
-                    <label>Country </label>
-                    <label class="select">
-                        <select id="signup-country">
-                            <option value="Spain">Spain</option>
-                            <option value="Sweden">Sweden</option>
-                        </select>
-                    </label>
-                </div>
-
-                <div>
-                    <label>City </label>
-                    <label class="select">
-                        <select id="signup-city">
-                            <!-- <option value=""></option> -->
-                            <option value="Spain">Madrid</option>
-                            <option value="Sweden">Barcelona</option>
-                            <option value="Sweden">Sevilla</option>
-                            <option value="Sweden">Valencia</option>
-                            <option value="Sweden">Bilbao</option>
-                            <option value="Sweden">Ibiza</option>
-                        </select>
-                    </label>
-                </div>
-            </form>
-
-            <div class="margined">
-                <a href="#login-form"   data-router="section" data-icon="left"  class="button same-line left">Back to Login</a>
-                <a href="#signup2" data-router="section" data-icon="right" class="button same-line right">Next</a>
-                <div class="clear"></div>
-            </div>
-
-        </article>
-    </section>
-
-
-    <section id="signup2" class="signup violet" data-transition="slide">
-        <header data-title="Signup (2/5)">
-            <nav>
-                <a href="#signup1" data-router="section" data-icon="left" data-label="Back"></a>
-            </nav>
-
-            <nav class="right">
-                <a href="#signup3" data-router="section" data-icon="right" data-label="Next"></a>
-            </nav>
-        </header>
-
-        <article class="active scroll list">
-            <ul id="signup-music">
-                <li class="anchor">What are your Music Styles?</li>
-                <li>
-                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
-                    <strong>Techno</strong>
-                    <small>bla bla bla</small>
-                </li>
-                <li>
-                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
-                    <strong>Electro</strong>
-                    <small>bla bla bla</small>
-                </li>
-                <li>
-                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
-                    <strong>Dance</strong>
-                    <small>bla bla bla</small>
-                </li>
-                <li>
-                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
-                    <strong>Pop</strong>
-                    <small>bla bla bla</small>
-                </li>
-            </ul>
-
-            <div class="margined">
-                <a href="#signup1"   data-router="section" data-icon="left"  class="button same-line left">Back</a>
-                <a href="#signup3" data-router="section" data-icon="right" class="button same-line right">Next</a>
-                <div class="clear"></div>
-            </div>
-        </article>
-    </section>
-
-
-    <section id="signup3" class="signup violet" data-transition="slide">
-        <header data-title="Signup (3/5)">
-            <nav>
-                <a href="#signup2" data-router="section" data-icon="left" data-label="Back"></a>
-            </nav>
-
-            <nav class="right">
-                <a href="#signup4" data-router="section" data-icon="right" data-label="Next"></a>
-            </nav>
-        </header>
-
-        <article class="active scroll list">
-            <ul id="signup-ambient">
-                <li class="anchor">Prefered Ambients</li>
-                <li>
-                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
-                    <strong>Techno</strong>
-                    <small>bla bla bla</small>
-                </li>
-                <li>
-                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
-                    <strong>Electro</strong>
-                    <small>bla bla bla</small>
-                </li>
-                <li>
-                    <a href="#" class="violet small button right" data-icon="multiply" data-label="Like ?"></a>
-                    <strong>Dance</strong>
-                    <small>bla bla bla</small>
-                </li>
-                <li>
-                    <a href="#" class="accept small button right" data-icon="check" data-label="Great!"></a>
-                    <strong>Pop</strong>
-                    <small>bla bla bla</small>
-                </li>
-            </ul>
-
-            <div class="margined">
-                <a href="#signup2"   data-router="section" data-icon="left"  class="button same-line left">Back</a>
-                <a href="#signup4" data-router="section" data-icon="right" class="button same-line right">Next</a>
-                <div class="clear"></div>
-            </div>
-        </article>
-    </section>
-
-
-    <section id="signup4" class="signup violet" data-transition="slide">
-        <header data-title="Signup (4/5)">
-            <nav>
-                <a href="#signup3" data-router="section" data-icon="left" data-label="Back"></a>
-            </nav>
-
-            <nav class="right">
-                <a href="#signup5" data-router="section" data-icon="right" data-label="Next"></a>
-            </nav>
-        </header>
-
-        <article class="active scroll list">
-            <div class="margined">
-                <!-- TODO -->
-                <p id="signup-picture">Select a photo to display in your profile</p>
-                <br>
-
-                <p>Describe yourself briefly</p>
-                <br>
-                <form>
-                    <label>A short bio</label>
-                    <textarea id="signup-bio" cols="30" rows="10" value="A short biography..."></textarea>
-                </form>
-
-                <a href="#signup3" data-router="section" data-icon="left"  class="button same-line left">Back</a>
-                <a href="#signup5" data-router="section" data-icon="right" class="button same-line right">Next</a>
-                <div class="clear"></div>
-            </div>
-        </article>
-    </section>
-
-
-    <section id="signup5" class="signup violet" data-transition="slide">
-        <header data-title="Signup (5/5)">
-            <nav>
-                <a href="#signup4" data-router="section" data-icon="left" data-label="Back"></a>
-            </nav>
-
-            <nav class="right">
-                <a href="#" data-icon="check" data-label="Confirm" class="btn-signup"></a>
-            </nav>
-        </header>
-
-        <article class="active scroll list">
-            <form class="margined rounded">
-                <p class="login-text">Finally, introduce your data for login</p>
-                <br>
-
-                <label>Your Username</label>
-                <input type="text"     placeholder="Your username..." id="signup-username" value="prueba@gh.com">
-
-                <label>Your Password</label>
-                <input type="password" placeholder="Your password..." id="signup-password" value="1234">
-            </form>
-
-            <div class="margined">
-                <a href="#" class="button anchor accept btn-signup">Confirm</a>
-            </div>
-        </article>
-    </section>
-
-
-    <!-- Lungo - Dependencies -->
+    <!-- App Dependencies -->
     <script src="components/quojs/quo.js"></script>
     <script src="components/lungo/lungo.js"></script>
     <script src="components/monocle/monocle.js"></script>
 
     <!-- Lungo - Sandbox App -->
     <script type="text/javascript">
-        window.App = window.App || {};
+        window.App = window.App || {
+            name    : "Younite",
+            version : "0.5"
+        };
 
         Lungo.init({
-            name      : 'Younite',
-            version   : '0.4.2',
+            name      : App.name,
+            version   : App.version,
             resources : [
-                            'assets/views/nav.html',
-                            'assets/views/search.html',
-                            'assets/views/parties.html',
-                            'assets/views/party.html',
-                            'assets/views/sites.html',
-                            'assets/views/site.html',
-                            'assets/views/map.html',
-                            'assets/views/friends.html',
-                            'assets/views/profile.html',
-                            'assets/views/settings.html',
-                            'assets/views/help.html',
-                            'assets/views/about.html',
-                            'assets/views/activity.html'
-                        ]
+                'assets/html/init/login-form.html',
+                'assets/html/init/login-list.html',
+                'assets/html/init/signup1.html',
+                'assets/html/init/signup2.html',
+                'assets/html/init/signup3.html',
+                'assets/html/init/signup4.html',
+                'assets/html/init/signup5.html',
+
+                'assets/html/nav.html',
+                'assets/html/search.html',
+                'assets/html/parties.html',
+                'assets/html/party.html',
+                'assets/html/sites.html',
+                'assets/html/site.html',
+                'assets/html/comment.html',
+                'assets/html/map.html',
+                'assets/html/friends.html',
+                'assets/html/profile.html',
+                'assets/html/profile-friend.html',
+                'assets/html/settings.html',
+                'assets/html/help.html',
+                'assets/html/about.html',
+                'assets/html/activity.html'
+            ]
         });
     </script>
 
     <!-- Events Handlers -->
     <script type="text/javascript" src="assets/events/swipe-gestures.js"></script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <!-- Temporary libs -->
+    <script type="text/javascript" src="components/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="components/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="node_modules/deployd/bin/dpd.js"></script>
 
-    <script type="text/javascript" src="app/_build/app.js"></script>
+    <!-- App -->
+    <script type="text/javascript" src="bin/app.js"></script>
 
 </body>
 

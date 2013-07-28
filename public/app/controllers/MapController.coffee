@@ -8,7 +8,7 @@ class App.MapController extends Monocle.Controller
 
     onLoad: (event) ->
         unless @notified
-            Lungo.Notification.confirm(
+            Lungo.Notification.confirm
                 icon: "pushpin"
 
                 title: "¿Find the nearest sites?"
@@ -24,7 +24,6 @@ class App.MapController extends Monocle.Controller
                     icon: "multiply"
                     label: "Don't allow"
                     callback: @onCancel
-            )
 
 
     onAccept: ->

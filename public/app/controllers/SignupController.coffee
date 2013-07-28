@@ -1,9 +1,12 @@
+#_require ../auxiliary/Utils.coffee
+#_require ../auxiliary/Connector.coffee
+
 class App.SignupController extends Monocle.Controller
 
     elements:
         # Signup 1
         "#signup-name"      : "displayName"
-        "#signup-birthdate" : "birthday"  # TODO cambiar por birthdate en el server
+        "#signup-birthdate" : "birthdate"
         "#signup-gender"    : "gender"
         "#signup-country"   : "country"
         "#signup-city"      : "city"
@@ -51,22 +54,22 @@ class App.SignupController extends Monocle.Controller
         console.log data
         p = App.Connector.signup data
 
-        p.done (data) =>
-            console.log data
-            App.Delegate.boot()
-            App.Utils.showSuccess App.Messages.UserCreated, ->
-                Lungo.Router.section('#activity')
-
-        p.fail App.Utils.fail
-
-        # TODO
-        # Signup y despues login o solo signup ?
         # p.done (data) =>
         #     console.log data
+        #     App.Delegate.boot()
         #     App.Utils.showSuccess App.Messages.UserCreated, ->
-        #         q = App.Connector.login data
-        #         q.done ->
-        #             App.Delegate.boot()
-        #             Lungo.Router.section('#activity')
-        #         q.fail App.Utils.fail
+        #         Lungo.Router.section('#activity')
+
         # p.fail App.Utils.fail
+
+        p.done (data) =>
+            console.log data
+            App.Utils.showSuccess App.Messages.UserCreated, ->
+                q = App.Connector.login data
+                q.done ->
+                    App.Delegate.boot()
+                    Lungo.Router.section '#activity'
+                q.fail (xhr) ->
+                    Lungo.Router.section '#login-form'
+                    App.Utils.fail xhr
+        p.fail App.Utils.fail
