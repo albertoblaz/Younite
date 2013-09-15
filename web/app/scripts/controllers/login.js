@@ -1,18 +1,23 @@
 'use strict';
 
 angular.module('webApp')
-  .controller('LoginCtrl', ['$scope', 'SessionService', 'UserService', function($scope, Session, User) {
+  .controller('LoginCtrl', ['$scope', '$location', 'UserState', function($scope, $location, User) {
 
     $scope.user = {username: '', password: ''};
 
     $scope.login = function() {
-      $scope.user = Session.save($scope.user, function(success) {
+      var response = User.login($scope.user);
+      response.success(function(data, status, headers, config) {
         User.isLogged = true;
         User.username = $scope.user.username;
+        User.id = data.uid;
         $location.path('/');
-      }, function(error) {
-        $scope.loginError = true;
+      });
+      response.error(function(data, status, headers, config) {
         User.isLogged = false;
+        $scope.loginError = true;
+        User.username = '';
+        User.id = '';
       });
     };
   }]);

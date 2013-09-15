@@ -30,8 +30,13 @@ app.config(function ($routeProvider) {
     });
 });
 
-app.factory('SessionService', function($resource) {
-  return $resource('http://localhost\\:2403/discouser/login');
-});
 
+app.run(function ($rootScope, $location, UserState) {
+    $rootScope.$on('$routeChangeSuccess', function(event, currRoute){
+      console.log(currRoute.requireLogin);
+      if (currRoute.requireLogin && !UserState.isLogged) {
+        $location.path("/login");
+      }
+    });
+  });
 
