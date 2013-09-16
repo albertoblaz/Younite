@@ -7,19 +7,20 @@ angular.module('webApp')
 
     var user = {id : '', username : '', logged : false};
 
-    api.login = function(userData){
-      $http.post('http://localhost:2403/discouser/login')
+    api.login = function(userData, callback){
+      $http.post('http://localhost:2403/discouser/login', userData)
         .success(function(data){
+          console.log(data);
           user.id = data.uid;
           user.logged = true;
           user.username = userData.username;
           //$cookie.put("younite-user-logged", user);
-          return true;
+          callback(true);
         })
         .error(function(){
           user = {id : '', username : '', logged : false};
           //$cookie.remove("younite-user-logged");
-          return false;
+          callback(false);
         });
     };
 
@@ -28,7 +29,7 @@ angular.module('webApp')
         .success(function(){
           user = {id : '', username : '', logged : false};
           //$cookie.remove("younite-user-logged");
-          return true;
+          callback(true);
         });
     };
 
