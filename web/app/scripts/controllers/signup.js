@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('webApp')
+angular.module('webApp.controllers')
   .controller('SignupCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

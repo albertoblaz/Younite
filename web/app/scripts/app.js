@@ -1,14 +1,11 @@
 'use strict';
 
-var app = angular.module('webApp', ['ngResource']);
+var app = angular.module('webApp', ['webApp.controllers', 'webApp.services', 'webApp.directives']);
 
-app.config(['$httpProvider', function($httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    }
-]);
+app.config(function ($routeProvider, $httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-app.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
@@ -31,12 +28,11 @@ app.config(function ($routeProvider) {
 });
 
 
-app.run(function ($rootScope, $location, UserState) {
-    $rootScope.$on('$routeChangeSuccess', function(event, currRoute){
-      console.log(currRoute.requireLogin);
-      if (currRoute.requireLogin && !UserState.isLogged) {
+app.run(['$rootScope', '$location', 'UserService', function ($root, $location, UserSrv) {
+    $root.$on('$routeChangeStart', function(event, currRoute){
+      if (currRoute.requireLogin && !UserSrv.isLogged()) {
         $location.path("/login");
       }
     });
-  });
+  }]);
 
