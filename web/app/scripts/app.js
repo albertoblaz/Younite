@@ -1,14 +1,11 @@
 'use strict';
 
-var app = angular.module('webApp', ['ngResource']);
+var app = angular.module('webApp', ['webApp.controllers', 'webApp.services', 'webApp.directives']);
 
-app.config(['$httpProvider', function($httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    }
-]);
+app.config(function ($routeProvider, $httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-app.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
