@@ -2,7 +2,7 @@
 
 angular.module('webApp.directives')
 
-  .directive('focusMe', function($timeout) {
+/*  .directive('focusMe', function($timeout) {
   return {
     scope: { trigger: 'focusMe' },
     link: function(scope, element) {
@@ -16,4 +16,4 @@ angular.module('webApp.directives')
       });
     }
   };
-});
+});*/

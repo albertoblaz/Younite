@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('webApp.services', ['ngCookies']);
+angular.module('webApp.services', ['ngCookies', 'ngResource']);

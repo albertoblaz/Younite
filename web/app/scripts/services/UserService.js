@@ -44,4 +44,10 @@ angular.module('webApp.services')
     console.log(api);
 
     return api;
-  }]);
+  }])
+
+  .factory('UserResource', function($resource){
+    return $resource('http://localhost\\:2403/discouser/:userId',
+      { userId:'@id' }
+    );
+  });
