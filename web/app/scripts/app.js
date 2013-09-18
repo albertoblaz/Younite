@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('webApp', ['webApp.controllers', 'webApp.services', 'webApp.directives']);
+var app = angular.module('webApp', ['webApp.controllers', 'webApp.services', 'webApp.directives', 'ui.bootstrap']);
 
 app.config(function ($routeProvider, $httpProvider) {
   $httpProvider.defaults.useXDomain = true;
