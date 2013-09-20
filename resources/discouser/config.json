@@ -1,12 +1,12 @@
 {
 	"type": "UserCollection",
 	"properties": {
-		"sites": {
-			"name": "sites",
-			"type": "array",
-			"typeLabel": "array",
+		"site": {
+			"name": "site",
+			"type": "string",
+			"typeLabel": "string",
 			"required": false,
-			"id": "sites",
+			"id": "site",
 			"order": 0
 		},
 		"role": {
@@ -16,6 +16,14 @@
 			"required": false,
 			"id": "role",
 			"order": 1
+		},
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "name",
+			"order": 2
 		}
 	}
 }

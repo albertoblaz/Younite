@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('webApp.controllers')
-  .controller('SignupCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('SignupCtrl', ['$scope', 'UserResource', function ($scope, User) {
+    $scope.user = {};
+    $scope.signup = function(){
+      User.save($scope.user);
+    }
+  }]);

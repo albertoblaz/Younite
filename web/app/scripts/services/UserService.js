@@ -14,12 +14,15 @@ angular.module('webApp.services')
           user.id = data.uid;
           user.logged = true;
           user.username = userData.username;
+          user.sid = userData.username;
           $cookie.put("younite-user-logged", user);
+          $cookie.put("sid", user.sid);
           callback(true);
         })
         .error(function(){
           user = {id : '', username : '', logged : false};
           $cookie.remove("younite-user-logged");
+          $cookie.remove("sid");
           callback(false);
         });
     };
