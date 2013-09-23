@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Younite</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- iPhone -->
+    <link href="http://lungo.tapquo.com/resources/icon-57.png" sizes="57x57" rel="apple-touch-icon">
+    <link href="http://lungo.tapquo.com/resources/startup-image-320x460.png" media="(device-width: 320px) and (device-height: 480px)
+             and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+
+    <!-- iPhone (Retina) -->
+    <link href="http://lungo.tapquo.com/resources/icon-114.png" sizes="114x114" rel="apple-touch-icon">
+    <link href="http://lungo.tapquo.com/resources/startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px)
+             and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <!-- iPhone 5 -->
+    <link href="http://lungo.tapquo.com/resources/startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px)
+             and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <!-- iPad -->
+    <link href="http://lungo.tapquo.com/resources/icon-72.png" sizes="72x72" rel="apple-touch-icon">
+    <link href="http://lungo.tapquo.com/resources/startup-image-768x1004.png" media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: portrait)
+             and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+    <link href="http://lungo.tapquo.com/resources/startup-image-748x1024.png" media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: landscape)
+             and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+
+    <!-- iPad (Retina) -->
+    <link href="http://lungo.tapquo.com/resources/icon-144.png" sizes="144x144" rel="apple-touch-icon">
+    <link href="http://lungo.tapquo.com/resources/startup-image-1536x2008.png" media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: portrait)
+             and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="http://lungo.tapquo.com/resources/startup-image-1496x2048.png" media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: landscape)
+             and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <!-- Lungo - Stylesheets -->
+    <link rel="stylesheet" href="components/lungo/lungo.css">
+    <link rel="stylesheet" href="components/lungo/lungo.icon.css">
+    <link rel="stylesheet" href="components/lungo/lungo.icon.brand.css">
+    <link rel="stylesheet" href="components/lungo/theme.lungo.css" id="theme-stylesheet">
+
+</head>
+
+
+<body class="app">
+
+    <section id="init" class="violet">
+        <article class="indented splash active violet">
+            <img src="assets/images/logo_splash.png">
+        </article>
+    </section>
+
+
+    <!-- App Dependencies -->
+    <script src="components/quojs/quo.js"></script>
+    <script src="components/lungo/lungo.js"></script>
+    <script src="components/monocle/monocle.js"></script>
+
+    <!-- Lungo - Sandbox App -->
+    <script type="text/javascript">
+        window.App = window.App || {
+            name    : "Younite",
+            version : "0.5"
+        };
+
+        Lungo.init({
+            name      : App.name,
+            version   : App.version,
+            resources : [
+                'assets/html/init/login-form.html',
+                'assets/html/init/login-list.html',
+                'assets/html/init/signup1.html',
+                'assets/html/init/signup2.html',
+                'assets/html/init/signup3.html',
+                'assets/html/init/signup4.html',
+                'assets/html/init/signup5.html',
+
+                'assets/html/nav.html',
+                'assets/html/search.html',
+                'assets/html/parties.html',
+                'assets/html/party.html',
+                'assets/html/sites.html',
+                'assets/html/site.html',
+                'assets/html/comment.html',
+                'assets/html/map.html',
+                'assets/html/friends.html',
+                'assets/html/profile.html',
+                'assets/html/profile-friend.html',
+                'assets/html/settings.html',
+                'assets/html/help.html',
+                'assets/html/about.html',
+                'assets/html/activity.html'
+            ]
+        });
+    </script>
+
+    <!-- Events Handlers -->
+    <script type="text/javascript" src="assets/events/swipe-gestures.js"></script>
+
+    <!-- Temporary libs -->
+    <script type="text/javascript" src="components/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="components/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="node_modules/deployd/bin/dpd.js"></script>
+
+    <!-- App -->
+    <script type="text/javascript" src="bin/app.js"></script>
+
+</body>
+
+</html>
