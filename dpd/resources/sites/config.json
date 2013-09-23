@@ -1,0 +1,109 @@
+{
+	"type": "Collection",
+	"properties": {
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "name",
+			"order": 0
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "description",
+			"order": 1
+		},
+		"city": {
+			"name": "city",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "city",
+			"order": 2
+		},
+		"address": {
+			"name": "address",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "address",
+			"order": 3
+		},
+		"picture": {
+			"name": "picture",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "picture",
+			"order": 4
+		},
+		"icon": {
+			"name": "icon",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "icon",
+			"order": 5
+		},
+		"music": {
+			"name": "music",
+			"type": "array",
+			"typeLabel": "array",
+			"required": true,
+			"id": "music",
+			"order": 6
+		},
+		"ambient": {
+			"name": "ambient",
+			"type": "array",
+			"typeLabel": "array",
+			"required": "true",
+			"id": "ambient",
+			"order": 7
+		},
+		"maxprice": {
+			"name": "maxprice",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "maxprice",
+			"order": 8
+		},
+		"maxpricevip": {
+			"name": "maxpricevip",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "maxpricevip",
+			"order": 9
+		},
+		"users": {
+			"name": "users",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "users",
+			"order": 10
+		},
+		"events": {
+			"name": "events",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "events",
+			"order": 11
+		},
+		"owner": {
+			"name": "owner",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "owner",
+			"order": 12
+		}
+	}
+}

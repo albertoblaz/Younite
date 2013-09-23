@@ -1,0 +1,26 @@
+{
+    "name": "haztunoche-deployd",
+    "version": "0.5.0",
+    "description": "Haz tu noche",
+    "main": "public/index.html",
+    "dependencies": {
+        "underscore": "~1.4.4",
+        "deployd": "git://github.com/fgodino/deployd#master",
+        "dpd-event": "~0.0.2"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/fgodino/haztunoche-deployd.git"
+    },
+    "author": "Haztunoche S.L.",
+    "license": "BSD",
+    "readmeFilename": "README.md",
+    "gitHead": "5582cbed0a72af592b05a2c6b03c1938952de607",
+    "bugs": {
+        "url": "https://github.com/fgodino/haztunoche-deployd/issues"
+    }
+}

@@ -1,0 +1,157 @@
+{
+	"type": "UserCollection",
+	"properties": {
+		"displayName": {
+			"name": "displayName",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "displayName",
+			"order": 0
+		},
+		"picture": {
+			"name": "picture",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "picture",
+			"order": 1
+		},
+		"gender": {
+			"name": "gender",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "gender",
+			"order": 2
+		},
+		"city": {
+			"name": "city",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "city",
+			"order": 3
+		},
+		"public": {
+			"name": "public",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "public",
+			"order": 4
+		},
+		"music": {
+			"name": "music",
+			"type": "array",
+			"typeLabel": "array",
+			"required": true,
+			"id": "music",
+			"order": 5
+		},
+		"ambient": {
+			"name": "ambient",
+			"type": "array",
+			"typeLabel": "array",
+			"required": true,
+			"id": "ambient",
+			"order": 6
+		},
+		"maxPrice": {
+			"name": "maxPrice",
+			"type": "number",
+			"typeLabel": "number",
+			"required": true,
+			"id": "maxPrice",
+			"order": 7
+		},
+		"birthdate": {
+			"name": "birthdate",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "birthdate",
+			"order": 8
+		},
+		"sites": {
+			"name": "sites",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "sites",
+			"order": 9
+		},
+		"friends": {
+			"name": "friends",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "friends",
+			"order": 10
+		},
+		"events": {
+			"name": "events",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "events",
+			"order": 11
+		},
+		"bio": {
+			"name": "bio",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "bio",
+			"order": 12
+		},
+		"role": {
+			"name": "role",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "role",
+			"order": 13
+		},
+		"timeline": {
+			"name": "timeline",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "timeline",
+			"order": 14
+		},
+		"activity": {
+			"name": "activity",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "activity",
+			"order": 15
+		},
+		"petitionsFrom": {
+			"name": "petitionsFrom",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "petitionsFrom",
+			"order": 16
+		},
+		"petitionsTo": {
+			"name": "petitionsTo",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "petitionsTo",
+			"order": 17
+		},
+		"recommendedSites": {
+			"name": "recommendedSites",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "recommendedSites",
+			"order": 18
+		}
+	}
+}

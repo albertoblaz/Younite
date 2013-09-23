@@ -1,0 +1,29 @@
+{
+	"type": "UserCollection",
+	"properties": {
+		"site": {
+			"name": "site",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "site",
+			"order": 0
+		},
+		"role": {
+			"name": "role",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "role",
+			"order": 1
+		},
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "name",
+			"order": 2
+		}
+	}
+}

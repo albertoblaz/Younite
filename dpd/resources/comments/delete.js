@@ -1,0 +1,1 @@
+cancelUnless(me && isMe(this.commenter), "Not authorized", 401);
