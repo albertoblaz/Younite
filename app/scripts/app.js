@@ -31,7 +31,7 @@ app.config(function ($routeProvider, $httpProvider) {
 
 app.run(['$rootScope', '$location', 'UserService', function ($root, $location, UserSrv) {
     $root.$on('$routeChangeStart', function(event, currRoute){
-      if (currRoute.requireLogin && !UserSrv.isLogged()) {
+      if (currRoute.requireLogin && !UserSrv.getUser().logged) {
         $location.path("/login");
       }
     });

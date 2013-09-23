@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('webApp.controllers', [])
-  .controller('HeaderCtrl', function($scope){
-    $scope.username = 'fer'
-  });
+  .controller('HeaderCtrl', ['$scope', 'UserService', function($scope, User){
+    $scope.username = User;
+    console.log(User);
+  }]);
