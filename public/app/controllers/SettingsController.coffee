@@ -1,1 +1,0 @@
-class App.SettingsController extends Monocle.Controller
