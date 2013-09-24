@@ -35,3 +35,7 @@
   z-index: 1;
   position : absolute;
 }
+
+.center { overflow: hidden; white-space: nowrap; height: 100%; }
+.center:before { content: ""; width: 1px; height: 100%; display: inline-block; vertical-align: middle; }
+.center div { display: inline-block; vertical-align: middle; white-space: normal; }

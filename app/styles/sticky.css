@@ -1,0 +1,27 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+.withextra {
+    padding: 0 0 245px; /* bottom = footer height */
+}
+
+.extra {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 245px;
+    width: 100%;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+body {
+  padding: 0 0 53px; /* bottom = footer height */
+}

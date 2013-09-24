@@ -1,15 +1,19 @@
 'use strict';
 
 angular.module('webApp.controllers')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', ['$scope', 'UserService', function ($scope, User) {
 
-    $http({method: 'GET', url: '/discouser/me'}).
+    $scope.step = false;
 
-      success(function(data, status, headers, config) {
-        $scope.response = data;
-      }).
-      error(function(data, status, headers, config) {
-         console.log(headers);
-        $scope.response = status;
-      });
-  });
+    $scope.stepAhead = function(){
+      console.log('hola!!');
+      $scope.step = !$scope.step;
+    }
+
+    if(!User.getUser().init){
+      $scope.mainTemplate = "noDisco"
+    } else {
+      console.log('hola!');
+    }
+
+  }]);

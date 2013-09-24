@@ -21,9 +21,16 @@
         <link rel="stylesheet" href="styles/base.css">
         <link rel="stylesheet" href="styles/base-responsive.css">
         <link rel="stylesheet" href="styles/dashboard.css">
+        <link rel="stylesheet" href="styles/sticky.css">
         <link rel="stylesheet" href="styles/signin.css">
 
         <!-- endbuild -->
+
+        <!--[if !IE 7]>
+            <style type="text/css">
+                #wrap {display:table;height:100%}
+            </style>
+        <![endif]-->
 </head>
   <body ng-app="webApp">
     <!--[if lt IE 7]>
@@ -37,6 +44,7 @@
 
     <!-- Add your site or application content here -->
     <div ng-view></div>
+    <ng:include src="templates.footer"></ng:include>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

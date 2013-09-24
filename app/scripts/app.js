@@ -38,7 +38,8 @@ app.run(['$rootScope', '$location', 'UserService', function ($root, $location, U
     $root.templates = {
       "header" : "views/tplHeader.html",
       "navigation" : "views/tplNavigation.html",
-      "footer" : "views/tplFooter.html"
+      "footer" : "views/tplFooter.html",
+      "extra" : "views/tplExtra.html"
     }
 
     $root.$on('$routeChangeStart', function(event, currRoute){
