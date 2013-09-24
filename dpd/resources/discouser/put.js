@@ -4,4 +4,5 @@ protect('role');
 
 if(!internal){
     protect('sites');
+    protect('init');
 }

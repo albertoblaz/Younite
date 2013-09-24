@@ -2,8 +2,6 @@
 
 protect('role');
 protect('site');
+protect('init');
 
 this.role = 'site';
-
-console.log(this);
-

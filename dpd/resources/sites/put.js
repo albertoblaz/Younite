@@ -6,6 +6,7 @@ var _ = require('underscore');
 
 protect('owner');
 changed('users');
+
 if(!internal){
  protect('users');
  protect('events');

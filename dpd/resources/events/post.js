@@ -5,14 +5,7 @@ var self = this;
 var _ = require('underscore');
 
 protect('users');
-
-var isOwner = function(disco){
-    return _.contains(me.sites, disco);
-};
-
-if(!isOwner(self.idDisco)){
-    cancel("You must own this site", 400);
-}
+this.idDisco = me.site;
 
 dpd.sites.put(self.idDisco, {events: {$push: self.id}}, function(res, err){
     cancelIf(err, err, 500);

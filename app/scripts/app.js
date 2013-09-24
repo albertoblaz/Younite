@@ -23,6 +23,10 @@ app.config(function ($routeProvider, $httpProvider) {
       templateUrl: 'views/signup.html',
       requireLogin: false
     })
+    .when('/settings', {
+      templateUrl: 'views/settings.html',
+      requireLogin: true
+    })
     .otherwise({
       redirectTo: '/'
     });
@@ -30,10 +34,18 @@ app.config(function ($routeProvider, $httpProvider) {
 
 
 app.run(['$rootScope', '$location', 'UserService', function ($root, $location, UserSrv) {
+
+    $root.templates = {
+      "header" : "views/tplHeader.html",
+      "navigation" : "views/tplNavigation.html",
+      "footer" : "views/tplFooter.html"
+    }
+
     $root.$on('$routeChangeStart', function(event, currRoute){
-      if (currRoute.requireLogin && !UserSrv.getUser().logged) {
-        $location.path("/login");
-      }
+      UserSrv.init(function(){
+        if (currRoute.requireLogin && !UserSrv.getUser().logged) {
+            $location.path('/login');
+        }
+      });
     });
   }]);
-

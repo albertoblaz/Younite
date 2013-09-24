@@ -1,4 +1,12 @@
-<div ng-include="templates.header"></div>
-<div ng-include="templates.navigation"></div>
-{{templates}}
-<div ng-include="templates.footer"></div>
+<ng:include src="templates.header"></ng:include>
+<ng:include src="templates.navigation"></ng:include>
+<div class="container jumbotron" >
+  <div class="row">
+    <div class="text-center col-sm-12 col-lg-12">
+      <h1>¡Bienvenido!</h1>
+      <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
+      <p><a class="btn btn-lg btn-success" href="#">Get started today</a></p>
+    </div>
+  </div>
+</div>
+<ng:include src="templates.footer"></ng:include>

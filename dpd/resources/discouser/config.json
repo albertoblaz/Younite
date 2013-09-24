@@ -21,9 +21,17 @@
 			"name": "name",
 			"type": "string",
 			"typeLabel": "string",
-			"required": false,
+			"required": true,
 			"id": "name",
 			"order": 2
+		},
+		"init": {
+			"name": "init",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "init",
+			"order": 3
 		}
 	}
 }

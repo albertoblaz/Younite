@@ -1,14 +1,22 @@
 'use strict';
 
 angular.module('webApp.services')
-  .factory('UserService', ['$http', 'UserResource', function Userservice($http, User) {
+  .factory('UserService', ['$rootScope', '$http', 'UserResource', '$location', function Userservice($root, $http, User, $location) {
 
     var api = {};
+    var user;
+    var ready = false;
 
-    var user = User.getMe(function(){
-      console.log(user.id);
-      user.logged = user.hasOwnProperty('id');
-    });
+    api.init = function(callback){
+      if(ready) callback();
+      else{
+        user = User.getMe(function(){
+          user.logged = user.hasOwnProperty('id');
+          ready = true;
+          callback()
+        });
+      }
+    };
 
     api.login = function(userData, callback){
       $http.post('/discouser/login', userData)
@@ -28,6 +36,7 @@ angular.module('webApp.services')
       $http.get('/discouser/logout')
         .success(function(){
           user = {id : '', username : '', logged : false};
+          $location.path('/login');
         });
     };
 
