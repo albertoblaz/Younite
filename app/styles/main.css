@@ -39,3 +39,33 @@
 .center { overflow: hidden; white-space: nowrap; height: 100%; }
 .center:before { content: ""; width: 1px; height: 100%; display: inline-block; vertical-align: middle; }
 .center div { display: inline-block; vertical-align: middle; white-space: normal; }
+
+#mainSlider {
+  position: relative;
+  overflow: hidden;
+}
+#mainSlider div{
+  position: relative;
+}
+
+.animate-enter,
+.animate-leave
+{
+    -webkit-transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+
+.animate-enter {
+    left: 100%;
+}
+.animate-enter-active {
+}
+
+.animate-leave {
+    left: -100%;
+}
+.animate-leave-active{
+}

@@ -1,12 +1,10 @@
 <ng:include src="templates.header"></ng:include>
 <ng:include src="templates.navigation"></ng:include>
 <ng:include src="mainTemplate"></ng:include>
-<ng:include src="templates.footer"></ng:include>
 
 <script type="text/ng-template" id="noDisco">
-<div ng-switch on="step" ng-animate="'wave'">
+<div id="mainSlider" ng-switch on="step" ng-animate="'animate'" style="height: 600px;" class="center container">
   <div ng-switch-when="false">
-    <div style="height: 600px;" class="center container">
       <div class="jumbotron">
         <div class="row">
           <div class="text-center col-sm-12 col-lg-12">
@@ -14,22 +12,21 @@
             <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
             <p><button class="btn btn-lg btn-success" href="#" ng-click="stepAhead()">Crea tu perfil!</button></p>
           </div>
-        </div>
       </div>
     </div>
   </div>
-  <div ng-switch-when="true">
-    <div style="height: 600px;" class="center container">
+  <div ng-switch-when="true" ng-include="'formCreate'"></div>
+</div>
+</script>
+
+<script type="text/ng-template" id="formCreate">
       <div class="jumbotron">
         <div class="row">
           <div class="text-center col-sm-12 col-lg-12">
-            <h1>Maradona!</h1>
+            <h1>Drogas!</h1>
             <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
             <p><button class="btn btn-lg btn-success" href="#" ng-click="stepAhead()">Crea tu perfil!</button></p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 </script>
