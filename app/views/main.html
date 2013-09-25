@@ -20,12 +20,62 @@
 </script>
 
 <script type="text/ng-template" id="formCreate">
-      <div class="jumbotron">
+      <div class="well">
         <div class="row">
-          <div class="text-center col-sm-12 col-lg-12">
-            <h1>Drogas!</h1>
-            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-            <p><button class="btn btn-lg btn-success" href="#" ng-click="stepAhead()">Crea tu perfil!</button></p>
+          <div class="col-xs-10 col-md-7"  style="padding: 35px">
+            <form action="/" id="validation-form" role="form" class="form-horizontal" novalidate="novalidate">
+                <div class="form-group row form-spaces">
+                    <!--input-->
+                    <label for="name" class="col-md-4 control-label">Nombre</label>
+                    <div class="col-lg-6">
+                        <input type="text" placeholder="Nombre de la discoteca" class="form-control" id="name" />
+                    </div>
+                    <!--End input-->
+                    <!--input-->
+                    <label for="city" class="col-md-4 control-label">Ciudad</label>
+                    <div class="col-lg-6">
+                        <select class="form-control" id="city" name="city">
+                          <option>-Selecciona una ciudad-</option>
+                          <option>Madrid</option>
+                          <option>Barcelona</option>
+                        </select>
+                    </div>
+                    <!--End input-->
+                    <!--input-->
+                    <label for="address" class="col-md-4 control-label">Dirección</label>
+                    <div class="col-lg-7">
+                        <input type="text" placeholder="Dirección" class="form-control" id="address" />
+                    </div>
+                    <!--End input-->
+                    <!--input-->
+                    <label for="music" class="col-md-4 control-label">Musica</label>
+                    <div class="col-lg-7">
+                        <label class="checkbox-inline" ng-repeat="music in musics">
+                          <input type="checkbox" ng-model="music.selected" >{{music.name}}
+                        </label>
+                    </div>
+                    <!--End input-->
+                    <!--input-->
+                    <label for="music" class="col-md-4 control-label">Ambiente</label>
+                    <div class="col-lg-7">
+                        <label class="checkbox-inline" ng-repeat="ambient in ambients">
+                          <input type="checkbox" ng-model="ambient.selected" >{{ambient.name}}
+                        </label>
+                    </div>
+                    <!--End input-->
+                    <label for="music" class="col-md-4 control-label">Ambiente</label>
+                    <div class="col-lg-7">
+                        <label class="checkbox-inline" ng-repeat="ambient in ambients">
+                          <input type="checkbox" ng-model="ambient.selected" >{{ambient.name}}
+                        </label>
+                    </div>
+                    <!--End input-->
+
+                </div>
+            </form>
+          </div>
+          <div class="col-xs-8 col-md-5">
+            Que tal
           </div>
         </div>
       </div>

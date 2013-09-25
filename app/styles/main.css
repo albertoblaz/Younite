@@ -38,34 +38,42 @@
 
 .center { overflow: hidden; white-space: nowrap; height: 100%; }
 .center:before { content: ""; width: 1px; height: 100%; display: inline-block; vertical-align: middle; }
-.center div { display: inline-block; vertical-align: middle; white-space: normal; }
+.center > div { display: inline-block; vertical-align: middle; white-space: normal; }
 
 #mainSlider {
   position: relative;
   overflow: hidden;
 }
-#mainSlider div{
-  position: relative;
+#mainSlider > div{
+  position: absolute;
+  width: 100%;
+  left: 0;
 }
 
 .animate-enter,
 .animate-leave
 {
-    -webkit-transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: 1175ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -webkit-transition: 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000) all;
+    -moz-transition: 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000) all;
+    -ms-transition: 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000) all;
+    -o-transition: 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000) all;
+    transition: 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000) all;
 }
 
 .animate-enter {
-    left: 100%;
+    left: 100% !important;
 }
-.animate-enter-active {
+.animate-enter.animate-enter-active {
+    left: 0 !important;
 }
 
 .animate-leave {
-    left: -100%;
+    left: 0 !important;
 }
-.animate-leave-active{
+.animate-leave.animate-leave-active{
+    left: -100% !important;
+}
+
+.form-spaces > div{
+  margin-bottom: 15px;
 }

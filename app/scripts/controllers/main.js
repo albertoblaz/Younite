@@ -5,8 +5,10 @@ angular.module('webApp.controllers')
 
     $scope.step = false;
 
+    $scope.musics = [{name: "Tango"},{name: "Walls"},{name: "Rock"}];
+    $scope.ambients = [{name: "Tango"},{name: "Walls"},{name: "Rock"}];
+
     $scope.stepAhead = function(){
-      console.log('hola!!');
       $scope.step = !$scope.step;
     }
 
